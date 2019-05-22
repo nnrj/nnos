@@ -1,0 +1,166 @@
+G E&G>C2 <A>C<G2 G C&DE D&CD2Q8
+G E&G>C<QFBA>C<G2 G D&EFQF<B>C2Q8
+A>CC< BA&B>C<2 A&B>C&<AA&GE&CD2Q8
+G E&G>C<QFBA>C<G2 G D&EFQF<B>C2Q8
+R1
+
+G E&G>C<2 A>C<G2 G C&DE D&CD2Q8
+G E&G>C<QFBA>C<G2 G D&EFQF<B>C2Q8
+A>CC< BA&B>C<2 A&B>C&<AA&GE&CD2Q8
+G E&G>C<QFBA>C<G2 G D&EFQF<B>C2Q8
+R1 R1 
+
+
+5 3&5>1<* 6>1<5* 5 1&23 2&12*Q8
+5 3&5>1<Q476>1<5* 5 2&34Q4<7>1*Q8
+6>11< 76&7>1<* 6&7>1&<66&53&12*Q8
+5 3&5>1<Q476>1<5* 5 2&34Q4<7>1*Q8
+R1
+
+Out the station, the old roadside.
+With green grass and blue sky.
+Willow and whistling oldly by wind tonight,
+and the far hill redly by old sunshine.
+
+In the word's end, the ocean center,
+my frends and lover never by never.
+Oh,my brother, drink the glass of liquor,
+end of the last pleasure is long winter.
+
+
+
+
+$E"EUC" 
+$K"GoodBye    Li Shutong"
+
+GE&G>C<2 A>C<G2 GC&DED&CD2Q8
+
+GE&G>C<2BQ4A>C<G2 GD&EFQ4<B>C2Q8
+
+A>CC<2 BA&BC>2 B&AC>&AA&GE&CQ4D2Q8
+
+GE&GC>2BQ4AC>G2 GD&EF2B<Q4C2Q8
+
+
+GE&GC>2 AC>G2 GC&DED&CD2Q8
+
+GE&GC>2BQ4AC>G2 GD&EFQ4B<C2Q8
+
+AC>C>2 BA&BC>2 B&AC>&AA&GE&CQ4D2Q8
+
+GE&GC>2BQ4AC>G2 GD&EF2B<Q4C2Q8
+
+GE&GC>2BQ4AC>G2 GD&EF2B<Q4C2Q8
+R1 R1
+
+Out the station, the old roadside.
+With green grass and blue sky.
+Willow and whistling oldly by wind tonight,
+and the far hill redly by old sunshine.
+
+In the word's end, the ocean center,
+my frends and lover never by never.
+Oh,my brother, drink the glass of liquor,
+end of the last pleasure is long winter.
+
+
+$E"EUC" 
+$K"GoodBye    Li Shutong"
+
+GE&GC>2 AC>G2 GC&DED&CD2QR8
+
+GE&GC>2BQ4AC>G2 GD&EFQ4B<C2R8
+
+AC>C>2 BA&BC>2 B&AC>&AA&GE&CQ4D2R8
+
+GE&GC>2BQ4AC>G2 GD&EF2B<Q4C2R8
+
+
+GE&GC>2 AC>G2 GC&DED&CD2QR8
+
+GE&GC>2BQ4AC>G2 GD&EFQ4B<C2R8
+
+AC>C>2 BA&BC>2 B&AC>&AA&GE&CQ4D2R8
+
+GE&GC>2BQ4AC>G2 GD&EF2B<Q4C2R8
+
+GE&GC>2BQ4AC>G2 GD&EF2B<Q4C2R8
+R1 R1
+
+Out the station, the old roadside.
+With green grass and blue sky.
+Willow and whistling oldly by wind tonight,
+and the far hill redly by old sunshine.
+
+In the word's end, the ocean center,
+my frends and lover never by never.
+Oh,my brother, drink the glass of liquor,
+end of the last pleasure is long winter.
+
+
+
+$E"EUC" 
+$K"GoodBye"
+
+GE&GC>2 AC>G2 GC&DED&CD2QR8
+
+GE&GC>2BQ4AC>G2 GD&EFQ4B<C2R8
+
+AC>C>2 BA&BC>2 B&AC>&AA&GE&CQ4D2R8
+
+GE&GC>2BQ4AC>G2 GD&EF2B<Q4C2Q8
+R1
+
+GE&GC>2 AC>G2 GC&DED&CD2QR8
+GE&GC>2BQ4AC>G2 GD&EFQ4B<C2R8
+AC>C>2 BA&BC>2 B&AC>&AA&GE&CQ4D2Q8
+
+GE&GC>2BQ4AC>G2 GD&EF2B<Q4C2Q8
+R1 R1
+
+
+
+
+
+$E"EUC" 
+$K"GoodBye"
+
+GE&GC>2 AC>G2 GC&DED&CD2QR8
+
+GE&GC>2BQ4AC>G2 GD&EFQ4B<C2R8
+
+AC>C>2 BA&BC>2 B&AC>&AA&GE&CQ4D2R8
+
+GE&GC>2BQ4AC>G2 GD&EF2B<Q4C2Q8
+R1 R1
+
+
+
+1 C
+2 D
+3 E
+4 F
+5 G
+6 A
+7 B
+1 C
+
+$E"" 字符编码
+& 连音线
+＞ 升高一个八度
+＜ 降低一个八度
++ 升高半音
+- 降低半音
+4 4分音符
+8 8分音符
+1 全音符
+2浮点二分音符
+O 设定八度音区
+L 音长
+R 休止符
+T 速度
+Q4 断奏
+Q8 连奏
+$"" 卡拉OK
+不区分大小写
+CGGAG2

@@ -1,0 +1,2 @@
+powershell
+::echo ‘cd %%~%’|powershell

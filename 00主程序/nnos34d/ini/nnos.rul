@@ -1,0 +1,17 @@
+format：
+    /*描述链接规则*/
+    code(align:1, logic:0x24, file:0x24);
+    data(align:4, logic:stack_end,file:code_end);
+    
+file:
+    /*无法在本节的命令行中编写.obj文件，.lib文件*/
+    /*本节可以完整路径书写。例如： c/nnos/nn001ibc.lib*/
+    ../lib/nnos.lib;
+    ../lib/golibc.lib;
+label:
+    /*指定必须始终链接的表情*/
+    /*指定自定义入口点*/
+    _NNOSStartup;
+    
+    /*以上三个部分顺序不可颠倒*/
+    

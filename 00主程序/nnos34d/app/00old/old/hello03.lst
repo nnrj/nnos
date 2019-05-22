@@ -1,0 +1,24 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_api_putchar
+     7 00000000                                 [FILE "hello03.c"]
+     8                                          [SECTION .text]
+     9 00000000                                 	GLOBAL	_NNOSMain
+    10 00000000                                 _NNOSMain:
+    11 00000000 55                              	PUSH	EBP
+    12 00000001 89 E5                           	MOV	EBP,ESP
+    13 00000003 6A 68                           	PUSH	104
+    14 00000005 E8 [00000000]                   	CALL	_api_putchar
+    15 0000000A 6A 65                           	PUSH	101
+    16 0000000C E8 [00000000]                   	CALL	_api_putchar
+    17 00000011 6A 6C                           	PUSH	108
+    18 00000013 E8 [00000000]                   	CALL	_api_putchar
+    19 00000018 6A 6C                           	PUSH	108
+    20 0000001A E8 [00000000]                   	CALL	_api_putchar
+    21 0000001F 6A 30                           	PUSH	48
+    22 00000021 E8 [00000000]                   	CALL	_api_putchar
+    23 00000026 C9                              	LEAVE
+    24 00000027 C3                              	RET

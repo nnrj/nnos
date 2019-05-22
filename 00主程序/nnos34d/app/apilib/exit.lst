@@ -1,0 +1,14 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_api_return
+     7 00000000                                 [FILE "exit.c"]
+     8                                          [SECTION .text]
+     9 00000000                                 	GLOBAL	_exit
+    10 00000000                                 _exit:
+    11 00000000 55                              	PUSH	EBP
+    12 00000001 89 E5                           	MOV	EBP,ESP
+    13 00000003 5D                              	POP	EBP
+    14 00000004 E9 [00000000]                   	JMP	_api_return

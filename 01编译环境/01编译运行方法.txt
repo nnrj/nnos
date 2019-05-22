@@ -1,0 +1,20 @@
+【编译环境配置完成后，方可正常编译】
+----------------------------------------------------------
+进入主程序目录/nnos0.34d目录，双击运行run_win.bat（Windows平台）或在终端运行"./run_linux.sh"（Linux平台），即可完成编译、运行。
+由于QEMU虚拟机不支持蜂鸣播放器，强烈建议编译后将镜像在VMware14以上版本中运行。操作方法见“发行版”目录。
+----------------------------------------------------------
+[常用编译命令（Windows、Linux通用）]
+（Windows下，以下编译命令建议在powershell而非cmd中运行。）
+（操作前请先在终端/powershell进入主程序目录/nnos0.34d）
+make 生成nnos.img
+make img 生成nnos.img
+make clean 清除中间文件（包括.gas .bim .obj .bin .sys等）
+make xxx.gas 生成某源文件的.gas中间文件（其他中间文件同）
+make ./app/xxx.nex 生成xxx应用程序的最终可执行文件
+make run 运行nnos.img（Windows下默认QEMU，Linux下默认Bochs）
+make install 将nnos.img安装到物理软盘（无软盘请勿使用此命令）
+make src_only 清空其他所有文件，仅保留源文件（应用程序、系统镜像将被删除）
+make run_qemu 在qemu虚拟机中运行nnos（仅支持Linux）
+----------------------------------------------------------
+年年软件
+2019.5.5

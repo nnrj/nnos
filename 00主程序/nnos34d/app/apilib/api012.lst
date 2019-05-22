@@ -1,0 +1,24 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "api012.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_api_refreshwin
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _api_refreshwin:	; void api_refreshwin(int win, int x0, int y0, int x1, int y1);
+    11 00000000 57                              		PUSH	EDI
+    12 00000001 56                              		PUSH	ESI
+    13 00000002 53                              		PUSH	EBX
+    14 00000003 BA 0000000C                     		MOV		EDX,12
+    15 00000008 8B 5C 24 10                     		MOV		EBX,[ESP+16]	; win
+    16 0000000C 8B 44 24 14                     		MOV		EAX,[ESP+20]	; x0
+    17 00000010 8B 4C 24 18                     		MOV		ECX,[ESP+24]	; y0
+    18 00000014 8B 74 24 1C                     		MOV		ESI,[ESP+28]	; x1
+    19 00000018 8B 7C 24 20                     		MOV		EDI,[ESP+32]	; y1
+    20 0000001C CD 40                           		INT		0x40
+    21 0000001E 5B                              		POP		EBX
+    22 0000001F 5E                              		POP		ESI
+    23 00000020 5F                              		POP		EDI
+    24 00000021 C3                              		RET

@@ -1,0 +1,13 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "alloca.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	__alloca
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 __alloca:
+    11 00000000 83 C0 FC                        	ADD EAX,-4
+    12 00000003 29 C4                           	SUB ESP,EAX
+    13 00000005 FF 24 04                        	JMP DWORD [ESP+EAX]

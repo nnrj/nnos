@@ -1,0 +1,26 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_api_malloc
+     7 00000000                                 [FILE "malloc.c"]
+     8                                          [SECTION .text]
+     9 00000000                                 	GLOBAL	_malloc
+    10 00000000                                 _malloc:
+    11 00000000 55                              	PUSH	EBP
+    12 00000001 89 E5                           	MOV	EBP,ESP
+    13 00000003 53                              	PUSH	EBX
+    14 00000004 8B 5D 08                        	MOV	EBX,DWORD [8+EBP]
+    15 00000007 8D 43 10                        	LEA	EAX,DWORD [16+EBX]
+    16 0000000A 50                              	PUSH	EAX
+    17 0000000B E8 [00000000]                   	CALL	_api_malloc
+    18 00000010 5A                              	POP	EDX
+    19 00000011 85 C0                           	TEST	EAX,EAX
+    20 00000013 74 05                           	JE	L2
+    21 00000015 89 18                           	MOV	DWORD [EAX],EBX
+    22 00000017 83 C0 10                        	ADD	EAX,16
+    23 0000001A                                 L2:
+    24 0000001A 8B 5D FC                        	MOV	EBX,DWORD [-4+EBP]
+    25 0000001D C9                              	LEAVE
+    26 0000001E C3                              	RET

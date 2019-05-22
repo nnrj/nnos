@@ -1,0 +1,12 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "api004.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_api_return
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _api_return:	; void api_return(void);
+    11 00000000 BA 00000004                     		MOV		EDX,4
+    12 00000005 CD 40                           		INT		0x40

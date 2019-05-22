@@ -1,0 +1,27 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "api013.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_api_linewin
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _api_linewin:		; void api_linewin(int win, int x0, int y0, int x1, int y1, int col);
+    11 00000000 57                              		PUSH	EDI
+    12 00000001 56                              		PUSH	ESI
+    13 00000002 55                              		PUSH	EBP
+    14 00000003 53                              		PUSH	EBX
+    15 00000004 BA 0000000D                     		MOV		EDX,13
+    16 00000009 8B 5C 24 14                     		MOV		EBX,[ESP+20]	; win
+    17 0000000D 8B 44 24 18                     		MOV		EAX,[ESP+24]	; x0
+    18 00000011 8B 4C 24 1C                     		MOV		ECX,[ESP+28]	; y0
+    19 00000015 8B 74 24 20                     		MOV		ESI,[ESP+32]	; x1
+    20 00000019 8B 7C 24 24                     		MOV		EDI,[ESP+36]	; y1
+    21 0000001D 8B 6C 24 28                     		MOV		EBP,[ESP+40]	; col
+    22 00000021 CD 40                           		INT		0x40
+    23 00000023 5B                              		POP		EBX
+    24 00000024 5D                              		POP		EBP
+    25 00000025 5E                              		POP		ESI
+    26 00000026 5F                              		POP		EDI
+    27 00000027 C3                              		RET

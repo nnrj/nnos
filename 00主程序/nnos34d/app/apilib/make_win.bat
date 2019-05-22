@@ -1,0 +1,2 @@
+make apilib.lib
+powershell

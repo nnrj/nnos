@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+   <!-- for help: cut start -->
+   <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+   <link rel="stylesheet" href="../rawrite.css" type="text/css">
+   <!-- for help: cut end -->
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <title>Rawrite32 Documentation</title>
+</head>
+<body>
+
+<!-- for help: insert start
+<table><tr>
+<td><img border="0" src="images/icon.png" alt="Icon"></td>
+<td width="30px"></td>
+<p style="height:20px"></p>
+<td><h2>Rawrite32</h2>
+NetBSD disk/USB stick image tool for Win32</td>
+</tr></table>
+     for help: insert end -->
+
+  <!-- for help: cut start -->
+  <div class="topNavigation">
+      <table><tr><td>
+        <table><tr><td><img border="0" src="images/icon.png" alt="Icon">
+	</td><td align="center">
+	     <b>Rawrite32</b><br>
+	     The <a href="https://www.netbsd.org">NetBSD</a><br>
+	     image writing tool
+	</td></tr></table>
+      </td>
+      <td width="30px"></td>
+      <td valign="bottom">
+        <a href="../index.html">Home</a> |
+        <span>&raquo;</span>
+        <a href="rawrite32-en.htm">Help</a> |
+        <a href="../license.html">License</a> |
+        <a href="../download.html">Download</a>
+        <br style="clear:both">
+      </td></tr></table>
+  </div>
+  <!-- for help: cut end -->
+
+<p>
+You may use this tool for preparing floppy disks or ZIP media to
+boot NetBSD from. It takes a file called "a filesystem image" (usually
+with a ".fs" suffix) or a compressed variant thereof (usually with ".fs.gz"
+suffix) and writes it to a removeable medium. This is similar to formatting
+a disk with the "transfer system files" option checked.
+<p>This program has it's homepage at 
+<a href="https://www.netbsd.org/~martin/rawrite32/">https://www.netbsd.org/~martin/rawrite32/</a>,
+where you will also find it's full
+<a href="https://www.netbsd.org/~martin/rawrite32/license.html">license terms</a>,
+and <a href="https://www.netbsd.org/~martin/rawrite32/download.html">source code</a>.
+A short version of the license is reproduced <a href="#license">below</a>.
+<p>Details on howto invoke this utility and it's <a href="#cmdLine">command line options</a> are explained below.
+<a name="screen"></a>
+<p><hr>
+<table>
+<tr><td>
+<map name="FPMap0">
+<area shape="rect" coords="9,32,563,54" alt="The Main menu" title="The Main menu" href="#mnuMain" >
+<area shape="rect" coords="21,82,388,108" alt="Input file name" title="Input file name" href="#edtFilename" >
+<area shape="rect" coords="393,82,464,108" alt="Browse for input file" title="Browse for input file" href="#btnSelect" >
+<area shape="rect" coords="22,133,555,298" alt="Program output messages" title="Program output messages" href="#edtOutput" >
+<area shape="rect" coords="474,74,510,109" alt="Settings/options menu" title="Settings/options menu" href="#mnuSettings" >
+<area shape="rect" coords="511,75,550,108" alt="Help menu" title="Help menu" href="#mnuHelp" >
+<area shape="rect" coords="23,300,435,324" alt="Target drive selection" title="Target drive selection" href="#cmbTarget" >
+<area shape="rect" coords="436,300,552,324" alt="Start writing!" title="Start writing!" href="#btnWriteToDisk" >
+</map>
+<img SRC="images/Rawrite-before-write.png" border=0 usemap="#FPMap0" alt="Screen">
+</td><td valign="top">
+<p>This is a typical screen while working with Rawrite32. Please click on the
+parts of the screen you would like documentation on.</p>
+<p><i>Please note that the main menu will be hidden in normal operation,
+you can make it visible by typing <b>ALT</b> or <b>F10</b>.</i></p>
+<p>
+The typical workflow is:<br>
+<ol>
+<li><a href="#btnSelect">Select</a> a disk image</li>
+<li>Verify <a href="#edtOutputHash">hash values</a></li>
+<li>Select <a href="#cmbTarget">target</a> device</li>
+<li><a href="#btnWriteToDisk">Write</a> image to device</li>
+</ol>
+For the latter item, note that you can select between writing to physical
+devices mode (the default), and writing to partitions (which is useful for
+backup/restore purposes, but not in the context of creating NetBSD boot
+media).
+<p>If you are using an ancient Win9x/Millennium version, you will
+only be able to write to floppy disks.
+</p>
+</td></tr>
+</table>
+<p><hr>
+<a name="mnuMain"></a>
+<H2>Main Menu</H2>
+<p>The main menu (only visible after pressing F10 or ALT) contains no
+hidden gems - everything is available via other parts of the GUI, check
+especially the <a href="#mnuSettings">settings</a> icon and the
+<a href="#mnuHelp">help</a> icon.
+<a name="mnuSettings"></a>
+<hr>
+<h2>Settings Menu</h2>
+<img src="images/Rawrite-settings-menu.png" alt="Settings menu">
+<p><a href="#hashoptions">Hash options</a> shows a dialog to select hash
+values calculated when opening image
+files.</p>
+<p><a href="#edtSector">Sector skip</a> shows a dialog to select the
+first sector written to the medium, or in other words: how many sectors
+to skip at the start.
+<p>Right in this menu you can select the target device mode:</p>
+<ul>
+<li>Writing to logical volumes (typically recognizable by the assigned
+"drive letters") allows writing to floppy disks or parts of disk
+devices that have been created by partitioning disks into slices.</li>
+<li>Writing to physical devices overwrites any partitioning information
+present on the device, so it is possible to write an image to a usb stick
+that creates two partitions, e.g. a FAT partition and a NetBSD ffs file
+system. To create bootable media, you will typically need to use this
+mode.
+</ul>
+<p>
+Note that ancient windows versions not based on Windows NT do not offer a
+generic access method for USB sticks, so you are restricted to logical
+volumes mode, and floppy disks as target drives.
+<a name="mnuHelp"></a>
+<hr>
+<h2>Help Menu</h2>
+<img src="images/Rawrite-help-menu.png" alt="The help menu">
+<p>
+This menu contains references to this help, the official web site, and,
+most important, the "about" box.
+<hr>
+<a NAME="hashOptions"></a>
+<H2>Hash Options</H2>
+<table>
+<tr><td><img src="images/Rawrite-hashoptions.png" alt="Options"></td>
+<td valign="top">
+<p>Hash values are used to ensure the integrity of a downloaded file.</p>
+<p>Basically they are strong cryptographic check sums over the input file.
+If you compare the values calculated by Rawrite32 (and copied to the
+windows clipboard) with the values published by the publisher of the
+disk image you have downloaded, you should be able to spot any alterations
+(due to network problems or manual tampering on mirrors).</p>
+<p>There are several "approved" algorithms, and one (MD5) used for historical
+reasons but considered "not quite safe" nowadays. You need to select the hash
+algorithms you find published values for your image for - for the NetBSD
+case, the default selection will deliver all the values you might need.</p>
+<p>If the sum for a strong algorithm (like SHA512) matches, there is no
+need to compare all the weaker results too.</p>
+<p>The hash options, by default, will fit your computers abilities, i.e.
+use the minimal useful set on slower/single CPU machines, and calculate
+all available hashes on multi core machines, where additional hash values
+will not cause a noticeable slowdown.</p>
+</td></tr>
+</table>
+<hr>
+<a NAME="btnSelect"></a>
+<H2>Select a file</H2>
+Opens a file browser dialog to select a file system image file. This is
+the typical way to enter a filename into the "Filename of image" edit
+box.
+<a name="edtFilename"></a>
+<H2>Filename of image</H2>
+The filename of the image to be written to disk. Rawrite32 accepts filesystem
+image files (suffix ".fs") and compressed filesystem images (suffix
+".fs.gz" or ".fs.bz2"). The utility doesn't verify the contents of the image (i.e. you
+can use this tool to write a word document on your boot disk if you like),
+but it displays the MD5 checksum of the file (and additionally of the decompressed
+contents, if the file is compressed). These values are displayed in the output
+area and copied to the clipboard. These values are published with every release
+or snapshot of NetBSD boot media, so you can compare them and verify you got
+the original image.
+<hr>
+<a name="cmbTarget"></a>
+<H2>Target</H2>
+Select the removable media (or physical device) to write the image to.
+If you are using "logical volumes" mode, this combobox lists all available
+volumes; if using physical device mode, it lists all devices. Devices that
+carry the current windows installation system directory are not offered
+(i.e. you typically will not see the device with C:\ on it in this list).
+<br>
+Be very careful when selecting a target, this program is able to kill all
+the contents on the selected drive/device. It will delete all previous
+contents, so you better double check the selection.
+<hr>
+<a name="edtSector"></a>
+<H2>Sector skip</H2>
+<img src="images/Rawrite-skip-options.png" alt="The sector skip options dialog">
+<p>Normally left blank, use only when following exact instructions 
+telling you to enter some value here!<p>
+Some install media preparation process may involve copying multiple images to
+a media or leaving the first part of the media alone for other reasons (e.g.
+because it contains a partition table). This can be accomplished by entering the
+number of (512 Byte sized) sectors to skip at the start of the device here
+when writing the second (or later) parts of the contents.
+<hr>
+<a NAME="btnWriteToDisk"></a>
+<H2>Write to disk...</H2>
+Starts the transfer to disk/USB device. This button is disabled unless you have selected
+a valid drive to transfer to (any removable will do) and a valid image to
+copy there. It will be disabled on illegal sector offset inputs.
+<p>
+If your intended target device is not listed here, check the target device
+mode in the <a href="#mnuSettings">settings menu</a>. If you added the
+USB device after starting Rawrite32 it might not yet be listed - just quit
+and restart the program, after Windows tells you the device would be usable.
+<hr>
+<a name="edtOutput"></a>
+<H2>Program messages</H2>
+The program outputs messages describing state/progress here. You can not enter
+anything there, it is like a TV: just watch the show.
+<table>
+<tr><td><img src="images/Rawrite-during-write.png" alt="Screen"></td>
+<td valign="top">
+<p>Progress during decompression/writing to target device
+is separated into input and output parts. Depending on the decompression
+and device writing speed, these values might get seriously out of sync.</p>
+<p>Since only the input size is deterministically known upfront, the
+progressbar only shows consumed input.</p>
+</td>
+</tr>
+</table>
+<a name="edtOutputHash"></a>
+<table>
+<tr><td><img src="images/Rawrite-writing-done.png" alt="Screen"></td>
+<td valign="top"><p>After output completed successfully, a (single, quick) hash value over
+all the output data will be displayed. This is more of a debugging feature
+for Rawrite32; whenever you have verified the input hash values, it would
+be impossible for somebody else to move things around or otherwise temper
+with your data. Note that the output hash is not a verification pass on
+the media, the values are calculated before passing the data to the
+device - it is not read again.</p></td>
+</tr>
+</table>
+<hr>
+<a name="cmdLine"></a><H2>Invocation and Command Line Options</H2>
+Normally you invoke this program by double clicking on the EXE file in the
+windows explorer or on a link to it. You then use the "Select" button to
+open a browser dialog and select the file you would like to write to disk.
+<p>
+You can also select the file in the windows explorer and drag&amp;drop it
+onto the program.
+<p>
+Another option is to invoke the program from the command line, passing the
+file to write as it's parameter.
+<hr>
+<a name="license"></a>
+<H2>License</H2>
+<p>Copyright © 2000-2018 The NetBSD Foundation, Inc.<br>
+All rights reserved.</p>
+<p>Copyright © 2000-2018 Martin Husemann &lt;<a href="mailto:martin@NetBSD.org">martin@NetBSD.org</a>&gt;.<br>
+Copyright © 2010 Izumi Tsutsui &lt;<a href="mailto:tsutsui@NetBSD.org">tsutsui@NetBSD.org</a>&gt;.<br>
+Copyright © 2010 Quentin Garnier &lt;<a href="mailto:cube@NetBSD.org">cube@NetBSD.org</a>&gt;.<br>
+All rights reserved.</p>
+<p>Usage of this program is free. Use it at your own risk.</p>
+<p>If you would like to redistribute this program in any form, please see the
+full <a href="https://www.NetBSD.org/~martin/rawrite32/license.html">license</a>
+for details.</p>
+</body>
+</html>
+

@@ -1,0 +1,15 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "api022.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_api_fclose
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _api_fclose:      		;void api_fclose(int fileHanle);
+    11 00000000 BA 00000016                     	MOV  EDX,22
+    12 00000005 8B 44 24 04                     	MOV  EAX,[ESP+4]   	;fileHanle
+    13 00000009 CD 40                           	INT  0x40
+    14 0000000B C3                              	RET
+    15 0000000C                                 	

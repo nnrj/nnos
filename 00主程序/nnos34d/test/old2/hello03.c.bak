@@ -1,0 +1,23 @@
+void api_putchar(int c);
+
+void NNOSMain(void)
+{
+	api_putchar('h');
+	api_putchar('e');
+	api_putchar('l');
+	api_putchar('l');
+	api_putchar('o');
+	return;
+}
+
+
+/* void api_putchar(int c);
+
+void NNOSMain(){
+	api_putchar('h');
+	api_putchar('e');
+	api_putchar('l');
+	api_putchar('l');
+	api_putchar('0');
+	return;
+} */

@@ -1,0 +1,45 @@
+--- Makefile	2005-09-25 19:03:04.520847744 +0900
++++ ../harib05a/Makefile	2005-09-25 19:01:31.341013232 +0900
+@@ -15,8 +15,11 @@
+ RULEFILE = $(TOOLPATH)haribote/haribote.rul
+ EDIMG    = $(TOOLPATH)edimg.exe
+ IMGTOL   = $(TOOLPATH)imgtol.com
+-COPY     = copy
+-DEL      = del
++
++#COPY     = copy
++COPY     = cp
++#DEL      = del
++DEL      = rm
+ 
+ # デフォルト動作
+ 
+@@ -45,8 +48,10 @@
+ bootpack.hrb : bootpack.bim Makefile
+ 	$(BIM2HRB) bootpack.bim bootpack.hrb 0
+ 
++#haribote.sys : asmhead.bin bootpack.hrb Makefile
++#	copy /B asmhead.bin+bootpack.hrb haribote.sys
+ haribote.sys : asmhead.bin bootpack.hrb Makefile
+-	copy /B asmhead.bin+bootpack.hrb haribote.sys
++	cat asmhead.bin bootpack.hrb > haribote.sys
+ 
+ haribote.img : ipl10.bin haribote.sys Makefile
+ 	$(EDIMG)   imgin:../z_tools/fdimg0at.tek \
+@@ -70,10 +75,13 @@
+ img :
+ 	$(MAKE) haribote.img
+ 
++#run :
++#	$(MAKE) img
++#	$(COPY) haribote.img ..\z_tools\qemu\fdimage0.bin
++#	$(MAKE) -C ../z_tools/qemu
+ run :
+-	$(MAKE) img
+-	$(COPY) haribote.img ..\z_tools\qemu\fdimage0.bin
+-	$(MAKE) -C ../z_tools/qemu
++	../z_tools/make.exe img
++	qemu -m 32 -localtime -std-vga -fda haribote.img
+ 
+ install :
+ 	$(MAKE) img
