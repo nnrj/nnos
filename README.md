@@ -1,5 +1,6 @@
 # nnos
 A Mini Operating System based on x86 Architecture.
+email:tianhehechu@qq.com
 本项目旨在开发一个完备的计算机操作系统。
 本系统基于川合秀实先生的《30天自制操作系统》设计和开发。
 目前已经完成了基本的内存管理、进程管理、I/O管理和文件管理。并提供了简陋的图形界面。
