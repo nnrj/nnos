@@ -13,6 +13,8 @@ Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email an
 // And File Manger just completed "file seek" and "run executable file", so we need to add "file write".  
 目前本系统仅能运行在1.44MB标准软盘中，借助GNU GRUB可完成U盘启动。  
 // At present, the OS rely on 1.44MB standard floppy disk, but it can run at USB flash disk help by GNU GRUB.  
+  # 系统层次架构
+  ![Image text](https://github.com/nnrj/nnos/blob/master/doc/img/NNOS_Framework.jpg)  
 # 项目计划：  
 // Project Plan:  
 【孕育阶段】  
@@ -39,7 +41,3 @@ Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email an
   年年软件  // Nian Nian Software(NNRJ)   
   2019.5.25 00:11  
   2019.4.26 21:57
-  
-  # 系统层次架构
-  ![Image text](https://github.com/nnrj/nnos/blob/master/doc/img/NNOS_Framework.jpg)  
-  
