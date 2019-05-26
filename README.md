@@ -1,4 +1,5 @@
 # nnos
+基本x86架构的迷你操作系统。
 A Mini Operating System based on x86 Architecture.  
 email:tianhehechu@qq.com  
 本项目旨在开发一个完备的计算机操作系统。  
@@ -32,6 +33,6 @@ Project Plan:
  英文注释和英文帮助文档也将跟进。  
  And the explanatory note in English as well as supplement in the same time.
   
-  年年软件  //Nian Nian Software
+  年年软件  //Nian Nian Software  
   2019.5.25 00:11
   2019.4.26 21:57
