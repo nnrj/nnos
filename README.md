@@ -36,6 +36,10 @@ Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email an
 
  # 欢迎加入我们的开发团队，QQ群号码【757581301】。 //Developer QQ group. Welcome!
 
-  年年软件  // Nian Nian Software(NNRJ) 
-  2019.5.25 00:11
+  年年软件  // Nian Nian Software(NNRJ)   
+  2019.5.25 00:11  
   2019.4.26 21:57
+  
+  # 系统层次架构
+  ![Image text](https://github.com/nnrj/nnos/blob/master/doc/img/NNOS_Framework.jpg)  
+  
