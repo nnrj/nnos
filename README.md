@@ -1,7 +1,7 @@
 # nnos
 基本x86架构的迷你操作系统。  
 // A Mini Operating System based on x86 Architecture.  
-Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email and QQ group.
+Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email and QQ group.  
 本项目旨在开发一个完备的计算机操作系统。  
 // The project aim to develop a complete computer operating system.  
 本系统基于川合秀实先生的《30天自制操作系统》设计和开发。  
