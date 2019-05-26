@@ -13,7 +13,7 @@ Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email an
 // And File Manger just completed "file seek" and "run executable file", so we need to add "file write".  
 目前本系统仅能运行在1.44MB标准软盘中，借助GNU GRUB可完成U盘启动。  
 // At present, the OS rely on 1.44MB standard floppy disk, but it can run at USB flash disk help by GNU GRUB.  
-项目计划：  
+# 项目计划：  
 // Project Plan:  
 【孕育阶段】  
   ·实现钟表和日历；  // Implement clock and calendar.  
@@ -34,7 +34,7 @@ Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email an
  英文注释和英文帮助文档也将跟进。  
  // And the explanatory note in English as well as supplement in the same time.
 
- 欢迎加入我们的开发团队，QQ群号码【757581301】。 //Developer QQ group. Welcome!
+ # 欢迎加入我们的开发团队，QQ群号码【757581301】。 //Developer QQ group. Welcome!
 
   年年软件  // Nian Nian Software(NNRJ) 
   2019.5.25 00:11
