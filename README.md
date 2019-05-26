@@ -26,7 +26,7 @@ Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email an
   ·增加任务管理器应用程序和文件浏览器应用程序；  // Add task manager application and file browser application.  
   ·实现C标准库<stdio.h>。  // Implement "<stdio.h>", an important standard library.  
   
- ------------------------------------------------------------------------------  
+ ------------------------------------------------------------------------------
  本系统尚未正式命名，临时命名为“年年操作系统”。  
  // The system has not yet been named, and temporarily named "NianOS"(shorter form “NNOS”).  
  相关开发文档和详细说明将在近期逐步完善。  
