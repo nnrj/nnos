@@ -1,4 +1,4 @@
-# nnos
+# NNOS
 基本x86架构的迷你操作系统。  
 // A Mini Operating System based on x86 Architecture.  
 Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email and QQ group.  
