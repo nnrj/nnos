@@ -7,7 +7,7 @@ Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email an
 本系统基于川合秀实先生的《30天自制操作系统》设计和开发。  
 // The OS is refer to "Osask", a book write by 川合秀实 about develop OS.  
 ![Image text](https://github.com/nnrj/nnos/blob/master/doc/img/NNOS_0.34b.gif)  
-发行版下载： [NNOS_0.34d_beta](https://github.com/nnrj/nnos/blob/master/beta/NNOS_0.34d_beta.zip)  
+发行版下载： [NNOS_0.34d_beta](https://raw.githubusercontent.com/nnrj/nnos/master/beta/NNOS_0.34d_beta.zip)  
 目前已经完成了基本的内存管理、进程管理、I/O管理和文件管理。并提供了简陋的图形界面。  
 // At present, we have completed the basic Memery Manager, Process Manager, I/O Manager and File Manager, and supply a crude GUI.  
 其中文件管理系统仅完成了文件查看、可执行文件运行。急需加入文件写入等功能。  
