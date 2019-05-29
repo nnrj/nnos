@@ -33,6 +33,7 @@ timers 打开计时器
 picture 图片查看器 示例：picture cheng.jpg
 music 音乐播放器 示例：music goodbye.mml
 （其他音乐文件：ltstar.mml、fate.mml、happy.mml）
+（注意：若在虚拟机中使用音乐播放器，请使用VMware，在QEMU中无法听到声音。）
 caltor 计算器 示例 caltor 1+1
 
 /*应用程序列表*/
