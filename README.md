@@ -6,7 +6,7 @@ Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email an
 // The project aim to develop a complete computer operating system.  
 本系统基于川合秀实先生的《30天自制操作系统》设计和开发。  
 // The OS is refer to "Osask", a book write by 川合秀实 about develop OS.  
-![Image text](https://github.com/nnrj/nnos/blob/master/doc/img/NNOS_0.34b.gif)  
+![Image text](https://i.loli.net/2020/03/10/nULhpRtMmVGixAu.gif)  
 发行版下载： [NNOS_0.34d_beta.](https://raw.githubusercontent.com/nnrj/nnos/master/beta/NNOS_0.34d_beta.zip)  
 目前已经完成了基本的内存管理、进程管理、I/O管理和文件管理。并提供了简陋的图形界面。  
 // At present, we have completed the basic Memery Manager, Process Manager, I/O Manager and File Manager, and supply a crude GUI.  
@@ -15,7 +15,7 @@ Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email an
 目前本系统仅能运行在1.44MB标准软盘中，借助GNU GRUB可完成U盘启动。  
 // At present, the OS rely on 1.44MB standard floppy disk, but it can run at USB flash disk help by GNU GRUB.  
   # 系统层次架构
-  ![Image text](https://github.com/nnrj/nnos/blob/master/doc/img/NNOS_Framework.jpg)  
+  ![Image text](https://i.loli.net/2020/04/08/OYwVKmqFNi2J6zy.jpg)  
 # 项目计划：  
 // Project Plan:  
 【孕育阶段】  
