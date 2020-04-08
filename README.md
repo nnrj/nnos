@@ -1,5 +1,5 @@
 # NNOS
-<font font-size="14">【注意】如果您的IP在国内，由于众所周知的原因，可能导致本页图片加载失败。</font>    
+<font size="8" color="lightpink">【注意】如果您的IP在国内，由于众所周知的原因，可能导致本页图片加载失败。</font>    
 基本x86架构的迷你操作系统。  
 // A Mini Operating System based on x86 Architecture.  
 Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email and QQ group.  
