@@ -1,6 +1,6 @@
 # NNOS API文档（第〇版，nnos_34d）
 
-> 更新日期：2020-06-30
+> 更新日期：2020-09-15
 >
 > NNOS项目：[github地址]( https://github.com/nnrj/nnos)
 >
