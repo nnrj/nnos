@@ -1,5 +1,4 @@
 # NNOS
-<<<<<<< HEAD
 【注意】如果您的IP在国内，由于众所周知的原因，可能导致本页图片加载失败。  
 =======
 <font size=10 color=red>【注意】如果您的IP在国内，由于众所周知的原因，可能导致本页图片加载失败。</font>     
@@ -33,8 +32,8 @@ Email:tianhehechu@qq.com  NNOS开发者交流QQ群【757581301】。  //Email an
   ·将文件系统由FAT12修改为FAT32；  // Modify file system format form FAT12 to FAT32(or other senior format).  
   ·增加任务管理器应用程序和文件浏览器应用程序；  // Add task manager application and file browser application.  
   ·实现C标准库<stdio.h>。  // Implement "<stdio.h>", an important standard library.  
-  
- ------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
  本系统尚未正式命名，临时命名为“年年操作系统”。  
  // The system has not yet been named, and temporarily named "NianOS"(shorter form “NNOS”).  
  相关开发文档和详细说明将在近期逐步完善。  
