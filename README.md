@@ -11,7 +11,7 @@
 > <span id="NNOS开发者交流群">NNOS开发者交流群：<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=a0e8dd73153e233040a0cb4ea45172596f6e2237a629aa174741de79a631a456"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="NNOS开发者交流群" title="NNOS开发者交流群"></a></span>（757581301）
 
 - 本项目旨在开发一个完备的计算机操作系统。 
-- 本系统基于川合秀实先生的**《30天自制操作系统》**设计和开发。
+- 本系统基于川合秀实先生的《**30天自制操作系统**》设计和开发。
 - 本系统尚未正式命名，临时命名为“年年操作系统”。  
 - **发行版下载**： [NNOS_0.34d_beta.](https://raw.githubusercontent.com/nnrj/nnos/master/beta/NNOS_0.34d_beta.zip) 
 - 目前已经完成了基本的内存管理、进程管理、I/O管理和文件管理。并提供了简陋的图形界面。 
@@ -42,9 +42,9 @@
 
 - 完整的项目开发文档、参考手册和问题列表已发布，可在`doc`目录中找到。
 
-- 如果您是系统开发者，请参考**《NNOS参考手册》和《NNOS_API文档》**；
+- 如果您是系统开发者，请参考《**NNOS参考手册**》和《**NNOS_API文档**》；
 
-- 如果您是应用开发者，只需要参考**《NNOS_API文档》**的**系统调用**部分。
+- 如果您是应用开发者，只需要参考《**NNOS_API文档**》的**系统调用**部分。
 
 ## 开发团队
 
