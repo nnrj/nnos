@@ -4,7 +4,7 @@
 
 *Update date:2020-09-15*
 
-A Mini Operating System based on x86 Architecture
+## A Mini Operating System based on x86 Architecture
 
 > Email:tianhehechu@qq.com  
 >
@@ -24,9 +24,7 @@ A Mini Operating System based on x86 Architecture
 
 ![Image text](https://github.com/nnrj/nnos/blob/master/doc/img/NNOS_Framework.jpg)  
 
-### 项目计划：  
-
-*Project Plan *
+## Project Plan
 
 - Implement clock and calendar;
 - Improve file system,implement computing app in OS;
