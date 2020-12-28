@@ -13,7 +13,7 @@
 #define NNOS_FILE_SYSTEM "FAT12"
 #define NNOS_CPU_BASED "Intel_80x86"
 #define NNOS_COMPANY "NNRJ"
-#define NNOS_AUTHOR "Liu Dongxu"
+#define NNOS_AUTHOR "刘东旭"
 #define NNOS_EMAIL "tianhehechu@qq.com"
 #define NNOS_UPDATE_DATE "2019-5-1"
 

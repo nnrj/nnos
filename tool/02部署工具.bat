@@ -1,4 +1,4 @@
-@echo 
+@echo off
 cd /d %~dp0
 echo 'd'|xcopy .\make\*.* D:\nnos34d\make /s
 @echo "make²¿ÊðÍê±Ï¡£"

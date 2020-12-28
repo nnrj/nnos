@@ -156,6 +156,7 @@ pipelineflush:                      ;流水线清空程序段
     MOV     ECX,0                   ;ECX寄存器置0
     MOV     CL,BYTE [CYLS_MAX]      ;柱面最大编号存入CL(ECX的低地址)
     IMUL    ECX,512*18*2/4          ;将CHS地址转换为LBA（Logical Block Address）逻辑地址，写入ECX寄存器，IMUL为有符号乘(整数乘法)。从柱面数变为字节数/4。
+    ;IMUL    ECX,512*63*1/4
     SUB     ECX,512/4               ;ECX=ECX-512/4,ECX偏移512/4，形成20位段地址（减去IPL<启动区>长度，512字节）
     CALL    memcpy                  ;调用mempy程序段（复制内存），转移引导扇区之外的剩余数据。将从0x00008200开始的磁盘内容复制到0x00100200
 ;memcpy(源地址，目的地址，数据大小);

@@ -7,7 +7,7 @@
 ;           nask程序，兼容nask和nasm
 ;#[运行结果]NNOS切换到了32位保护模式运行   
 ;=================================================
-[INSTRSET "i486p"] 			;使用80486的指令集以支持386以后的LGDT、EAX、CR0等关键字  
+;[INSTRSET "i486p"] 			;使用80486的指令集以支持386以后的LGDT、EAX、CR0等关键字  
 
     BOTPAK      EQU 0x00280000  ;bootpack加载位置信息保存位置
     DSKCAC      EQU 0x00100000  ;磁盘缓存首地址信息保存位置
@@ -156,7 +156,6 @@ pipelineflush:                      ;流水线清空程序段
     MOV     ECX,0                   ;ECX寄存器置0
     MOV     CL,BYTE [CYLS_MAX]      ;柱面最大编号存入CL(ECX的低地址)
     IMUL    ECX,512*18*2/4          ;将CHS地址转换为LBA（Logical Block Address）逻辑地址，写入ECX寄存器，IMUL为有符号乘(整数乘法)。从柱面数变为字节数/4。
-    ;IMUL    ECX,512*63*1/4
     SUB     ECX,512/4               ;ECX=ECX-512/4,ECX偏移512/4，形成20位段地址（减去IPL<启动区>长度，512字节）
     CALL    memcpy                  ;调用mempy程序段（复制内存），转移引导扇区之外的剩余数据。将从0x00008200开始的磁盘内容复制到0x00100200
 ;memcpy(源地址，目的地址，数据大小);
@@ -192,8 +191,8 @@ memcpy:                             ;内存写入之程序段，亦可使用stri
     SUB ECX,1                       ;ECX中记录的数据库总数减1，相减结果影响零标志位
     JNZ memcpy                      ;零标志位非0，继续循环执行mecpy，转移剩余的数据,否则继续执行下一条指令（减法运算结构非0则跳转到内存复制继续复制）
     RET                             ;零标志位为0，继续执行到此指令，结束循环，返回调用者
-    ;ALIGNBB  16                     ;指令按16位对齐，防止RET出错（一直添加DB 0，直到时机合适<地址能被16整除时>）。否则向段寄存器复制的MOV指令会变慢。
-	ALIGNB	16						;#[兼容nasm][代]   
+    ;ALIGNB  16                     ;指令按16位对齐，防止RET出错（一直添加DB 0，直到时机合适<地址能被16整除时>）。否则向段寄存器复制的MOV指令会变慢。
+	ALIGN	16						;#[兼容nasm][代]   
 
 GDT0:                                   ;临时GDT。0号空区域(null sector)，不能在此处定义段。
     ;RESB   8                           ;从当前位置向后空出8个字节，RESB(Reserve byte)
@@ -205,8 +204,8 @@ GDT0:                                   ;临时GDT。0号空区域(null sector)�
 GDTR0:									;通知GDT0已有GDT在GDT0中（16位段上限，32位段起始地址）
     DW      8 * 3 - 1                   ;(?)
     DD      GDT0                        ;(?)
-    ;ALIGNBB  16							;指令按16位对齐（一直添加DBO，直到时机合适）
-	ALIGNB	16                          ;#[兼容nasm][代]
+    ;ALIGNB  16							;指令按16位对齐（一直添加DBO，直到时机合适）
+	ALIGN	16                          ;#[兼容nasm][代]
 ;最初GDT在syshead中，并不在0x00270000~0x0027ffff范围之内，而IDT尚未设定，故处于中断禁止状态。
 ;bootpack.c中，应在初始化调色板前抓紧创建GDT、IDT并初始化它们和PIC,然后执行io_sti()允许中断。
 

@@ -1,12 +1,9 @@
-xcopy /y ini\Makefile_win Makefile
-xcopy /y ipl.asm ipl.nas
-xcopy /y syshead.asm syshead.nas
-xcopy /y osfun.asm osfun.nas
-xcopy /y .\app\api.asm .\app\api.nas
-::.\ini\getnas.exe
-echo syshead.nas ;[INSTRSET [INSTRSET|.\ini\getnas.exe
-echo osfun.nas ;[ [|.\ini\getnas.exe
-echo syshead.nas ALIGN ALIGNB|.\ini\getnas.exe
-::echo make run | powershell
-make run
-powershell
+if "%PROCESSOR_ARCHITECTURE%"=="x86" goto x86
+if "%PROCESSOR_ARCHITECTURE%"=="AMD64" goto x64
+exit
+:x64
+	call run_win_win64.bat
+	exit	
+:x86
+	call run_win_win32.bat
+	exit

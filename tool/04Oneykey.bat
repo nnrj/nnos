@@ -1,2 +1,7 @@
-call .\bat\settool.bat
-call .\bat\setenvi.bat
+@echo off
+cd .\bat
+call settool.bat
+cd .\bat
+call setenvi.bat
+echo 一键部署成功，按任意键退出本程序。
+pause
