@@ -27,13 +27,10 @@ void NNOSMain(){ //不能用return
 	int buffer[128],keyCMDBuffer[32];
 	int vmx, vmy, data;//屏幕宽度、屏幕高度、数据信息
 	MOUSE_CURSOR mouseCursor; //鼠标指针
-	
 	MEMERY_LIST *memeryList = (MEMERY_LIST *)MEMERY_ADDR; //内存表
 	SHTCTL *shtctl; //图层列表
 	unsigned char *buf_back, buf_mouse[256]; //桌面背景、鼠标指针、窗口信息数组
-	unsigned char buf_logo[2304];
 	SHEET *sht_back,*sht_mouse;//图层
-	SHEET *sht_logo;
 	TASK *taskA,*task;
 	TIMER *timer2,*timer3; //定时器
 	int centerX = (bootInfo->screen_width - 16) / 2; //屏幕中心点横坐标
@@ -129,8 +126,8 @@ void NNOSMain(){ //不能用return
 	buf_back  = (unsigned char *) memeryAlloc4k(memeryList, bootInfo->screen_width * bootInfo->screen_height); //为桌面背景图层缓冲区申请空间
 	sheet_setbuf(sht_back, buf_back, bootInfo->screen_width, bootInfo->screen_height, -1);  //设置桌面背景图层
 	initDesk(buf_back,bootInfo->screen_width, bootInfo->screen_height); //初始化桌面
-	////wordsDraw8(buf_back,bootInfo->screen_width,centerX - 30,centerY,COL8_FFFFFF,NNOS_VERSION); //字体渲染
-	////wordsDraw8(buf_back,bootInfo->screen_width,centerX - 30 - 1,centerY - 1,COL8_000000,NNOS_VERSION); //字体渲染
+	wordsDraw8(buf_back,bootInfo->screen_width,centerX - 30,centerY,COL8_FFFFFF,NNOS_VERSION); //字体渲染
+	wordsDraw8(buf_back,bootInfo->screen_width,centerX - 30 - 1,centerY - 1,COL8_000000,NNOS_VERSION); //字体渲染
 	keyWin = openConsole(shtctl);
 	
 	/*定时器、光标相关*/
@@ -141,22 +138,17 @@ void NNOSMain(){ //不能用return
  
 	/*鼠标相关*/
 	sht_mouse = sheet_alloc(shtctl); //鼠标图层分配
-	sht_logo = sheet_alloc(shtctl); //鼠标图层分配
 	sheet_setbuf(sht_mouse, buf_mouse, 16,16,99); //鼠标图层设定
-	sheet_setbuf(sht_logo, buf_logo,48,48,99);
 	initMouseCursor8(buf_mouse,99); //初始化鼠标指针图像点阵
-	initLogoGraph(buf_logo, 99, 48, 48);
 	vmx = centerX;vmy = centerY;data = -1; 
 
 	/*图层调整*/
 	sheet_slide(sht_back,0,0); //桌面背景图层复位
-	sheet_slide(sht_logo,centerX - 50,centerY - 16);
 	//sheet_slide(keyWin,40,120);
 	sheet_slide(sht_mouse,vmx,vmy); //鼠标图层复位
 	sheet_updown(sht_back,0); //图层顺序设定
 	//sheet_updown(keyWin,1);
 	sheet_updown(sht_mouse,2); 
-	sheet_updown(sht_logo,3);
 	//keywinOn(keyWin);	
 
 	putFIFOBuffer32(&FIFOKeyCMD,KEYCMD_LED_STATUS); //初始化键盘操作命令缓冲区数据
