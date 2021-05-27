@@ -1,5 +1,6 @@
 xcopy /y ini\Makefile_win Makefile
 xcopy /y ipl.asm ipl.nas
+xcopy /y ipl32.asm ipl32.nas
 xcopy /y syshead.asm syshead.nas
 xcopy /y osfun.asm osfun.nas
 xcopy /y .\app\api.asm .\app\api.nas

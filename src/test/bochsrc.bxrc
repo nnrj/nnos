@@ -1,0 +1,42 @@
+###############################################################
+# bochsrc.bxrc file for Finix.
+###############################################################
+
+# 首先设置 Bochs 在运行过程中能够使用的内存，本例为 32MB。
+# 关键字为 megs
+# how much memory the emulated machine will have
+megs: 32
+
+# 设置对应真实机器的 BIOS 和 VGA BIOS 。
+# 对应两个关键字为 ： romimage 和 vgaromimage
+# filename of ROM images
+# BIOS已经修改，地址可以不加，可以根据文件大小进行推断，如里加地址要与文件大小相匹配
+romimage: file=$BXSHARE/BIOS-bochs-latest
+vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
+
+# what disk images will be used 
+# 配置镜像名
+# floppya: 32=test.img, status=inserted
+
+# 选择启动盘符
+# choose the boot disk.
+# disk: 32=test.img, status=inserted  #从硬盘启动
+boot:disk
+
+# 设置日志文件的输入位置
+# where do we send log messages?
+log: ./ini/bochsout.txt
+
+# 关闭鼠标，打开键盘
+# disable the mouse, since Finix is text only
+mouse: enabled=0
+
+# enable key mapping, using US layout as default.
+# 键盘的映射方式也改变了
+keyboard: keymap=$BXSHARE/keymaps/x11-pc-us.map
+
+# 设置硬盘
+ata0: enabled=1,ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+
+# 启动盘信息
+ata0-master: type=disk, path="test.img", mode=flat

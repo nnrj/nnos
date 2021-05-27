@@ -122,6 +122,7 @@ void fontDraw8(char *vram,int scrx, int fx, int fy, char vcolor, char *font); //
 void fontDraw32(char *vram,int scrx,int fx,int fy,char vcolor,char *font1,char *font2); //GB2312字体渲染引擎
 void wordsDraw8(char *vram,int scrx,int fx,int fy,char vcolor,unsigned char *words); //字符串批量渲染引擎
 void initMouseCursor8(char *cusorGraph,char curBackColor); //初始化鼠标指针函数
+void initLogoGraph(char *logoGraph, char logoBackColor,int colLen, int rowLen); //初始化开机动画
 void pictureDraw8(char *varm,short scrx,PICTURE picture); //图形渲染函数
 void windowDraw8(char *vram,short scrx,WINDOW window,int focus,int area);
 void createWindow(unsigned char *coverBuffer, int width, int height, char *caption,int type,int focus);

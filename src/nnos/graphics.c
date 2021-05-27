@@ -473,7 +473,7 @@ void initMouseCursor8(char *cusorGraph,char curBackColor){
 					cusorGraph[cx * 16 + cy] = COL8_000000;break; //字符'*'处指针像素颜色为纯黑
 				}	
 				case '1' : {
-					cusorGraph[cx * 16 + cy] = COL8_FFFFFF;break; //字符'O'处指针像素颜色为纯白
+					cusorGraph[cx * 16 + cy] = COL8_FFFFFF;break; //字符'1'处指针像素颜色为纯白
 				}
 				//case '.':mouse[cx * 16 + cy] = curBackColor;break; //字符'.'处指针像素颜色为背景色
 				default : {
@@ -482,6 +482,27 @@ void initMouseCursor8(char *cusorGraph,char curBackColor){
 			}
 		}
 	}
+}
+
+/*开机动画图像解析引擎（静态）*/
+void initLogoGraph(char *logoGraph, char logoBackColor,int colLen, int rowLen){
+		int cx, cy; //行列坐标
+		for(cx = 0; cx < colLen; cx++){
+			for(cy = 0; cy < rowLen; cy++){
+				switch (LOGO_GRAPH[cx][cy]){
+					case '*' : {
+						logoGraph[cx * 16 + cy] = COL8_000000;break; //字符'*'处指针像素颜色为纯黑
+					}	
+					case '1' : {
+						logoGraph[cx * 16 + cy] = COL8_FFFFFF;break; //字符'1'处指针像素颜色为纯白
+					}
+					//case '.':mouse[cx * 16 + cy] = curBackColor;break; //字符'.'处指针像素颜色为背景色
+					default : {
+						logoGraph[cx * 16 + cy] = logoBackColor;break; //其他情况指针像素颜色为背景色
+					}
+				}
+			}
+		}
 }
 
 /*创建文本框*/
