@@ -1,0 +1,13 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "api027.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_api_getlang
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _api_getlang:				;int api_getlang();
+    11 00000000 BA 0000001B                     	MOV EDX,27
+    12 00000005 CD 40                           	INT 0x40
+    13 00000007 C3                              	RET

@@ -1,0 +1,34 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 [FILE "kernelC.c"]
+     7                                          [SECTION .text]
+     8 00000000                                 	ALIGN	2
+     9 00000000                                 	GLOBAL	_NNOSMain
+    10 00000000                                 _NNOSMain:
+    11 00000000 55                              	PUSH	EBP
+    12 00000001 89 E5                           	MOV	EBP,ESP
+    13 00000003 83 EC 04                        	SUB	ESP,4
+    14 00000006 C7 45 FC 00000000               	MOV	DWORD [-4+EBP],0
+    15 0000000D C7 45 FC 00000000               	MOV	DWORD [-4+EBP],0
+    16 00000014                                 L2:
+    17 00000014 83 7D FC 0A                     	CMP	DWORD [-4+EBP],10
+    18 00000018 7E 02                           	JLE	L5
+    19 0000001A EB 22                           	JMP	L3
+    20 0000001C                                 L5:
+    21 0000001C 8B 45 FC                        	MOV	EAX,DWORD [-4+EBP]
+    22 0000001F 05 000B8780                     	ADD	EAX,755584
+    23 00000024 C6 00 63                        	MOV	BYTE [EAX],99
+    24 00000027 8B 45 FC                        	MOV	EAX,DWORD [-4+EBP]
+    25 0000002A 05 000B8781                     	ADD	EAX,755585
+    26 0000002F C6 00 0C                        	MOV	BYTE [EAX],12
+    27 00000032 8D 45 FC                        	LEA	EAX,DWORD [-4+EBP]
+    28 00000035 FF 00                           	INC	DWORD [EAX]
+    29 00000037 8D 45 FC                        	LEA	EAX,DWORD [-4+EBP]
+    30 0000003A FF 00                           	INC	DWORD [EAX]
+    31 0000003C EB D6                           	JMP	L2
+    32 0000003E                                 L3:
+    33 0000003E                                 L6:
+    34 0000003E EB FE                           	JMP	L6

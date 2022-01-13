@@ -1,0 +1,48 @@
+/*《送别》李叔同作词 翻译：刘东旭 */
+
+$E"EUC";							T120L4O4
+
+$K"Out the station,";	G E&G>C2
+$K"the old roadside.";	<A>C<G2
+$K"With green grass and blue sky." G C&DE D&CD2Q8
+$K"Willow and whistling oldly ";	G E&G>C.<QFBA>C<G2
+$K"by wind tonight"; Q8
+$K"and the far hill redly "; G D&EFQF.<B>C2Q8
+$K"by old sunshine." Q8
+$K"In the word's end, "  A>CC<
+$K"the ocean center, " BA&B>C2<
+$K"my frends and lover "  A&B>C&<AA&GE&CD2Q8
+$K"never by never."  Q8
+$K"Oh,my brother, "  G E&G>C.<QFBA>C<G2
+$K"drink the glass of liquor, " 
+$K"end of the last pleasure " G D&EF.QF<B>C2Q8
+$K"is long winter."  Q8
+R1
+
+$K"Out the station,";	G E&G>C2
+$K"the old roadside.";	<A>C<G2
+$K"With green grass and blue sky." G C&DE D&CD2Q8
+$K"Willow and whistling oldly ";	G E&G>C<QFBA>C<G2
+$K"by wind tonight";
+$K"and the far hill redly "; G D&EFQF<B>C2Q8
+$K"by old sunshine."
+$K"In the word's end, "  A>CC<
+$K"the ocean center, " BA&B>C2<
+$K"my frends and lover "  A&B>C&<AA&GE&CD2Q8
+$K"never by never." 
+$K"Oh,my brother, "  G E&G>C<QFBA>C<G2
+$K"drink the glass of liquor, " 
+$K"end of the last pleasure " G D&EFQF<B>C2Q8
+$K"is long winter." 
+R1 R1
+
+/*
+1 C
+2 D
+3 E
+4 F
+5 G
+6 A
+7 B
+1 C
+*/

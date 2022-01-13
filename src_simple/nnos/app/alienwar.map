@@ -1,0 +1,51 @@
+text size :   2350(0x0092E)
+data size :    294(0x00126)
+bss  size :      0(0x00000)
+
+0x00000024 : (.text)
+0x00000024 : _NNOSMain
+0x00000680 : _putstr
+0x000007EC : _wait
+0x00000845 : _setdec8
+0x00000875 : _api_window
+0x00000875 : (.text)
+0x00000897 : _api_ascwin
+0x00000897 : (.text)
+0x000008BF : _api_boxwin
+0x000008BF : (.text)
+0x000008E7 : _api_refreshwin
+0x000008E7 : (.text)
+0x00000909 : _api_getkey
+0x00000909 : (.text)
+0x00000915 : _api_alloctimer
+0x00000915 : (.text)
+0x0000091D : _api_inittimer
+0x0000091D : (.text)
+0x0000092F : _api_settimer
+0x0000092F : (.text)
+0x00000941 : __alloca
+0x00000941 : (.text)
+0x00000949 : (.text)
+0x00000949 : _NNOSStartup
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00016800 : (.data)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)

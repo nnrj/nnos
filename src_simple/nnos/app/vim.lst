@@ -1,0 +1,75 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_api_command
+     7 00000000                                 	EXTERN	_api_fopen
+     8 00000000                                 	EXTERN	_api_fread
+     9 00000000                                 	EXTERN	_api_printc
+    10 00000000                                 	EXTERN	_api_return
+    11 00000000                                 	EXTERN	_api_printl
+    12 00000000                                 [FILE "vim.c"]
+    13                                          [SECTION .data]
+    14 00000000                                 LC0:
+    15 00000000 46 69 6C 65 20 6E 6F 74 20 66   	DB	"File not found.",0x0A,0x00
+       0000000A 6F 75 6E 64 2E 0A 00 
+    16                                          [SECTION .text]
+    17 00000000                                 	GLOBAL	_NNOSMain
+    18 00000000                                 _NNOSMain:
+    19 00000000 55                              	PUSH	EBP
+    20 00000001 89 E5                           	MOV	EBP,ESP
+    21 00000003 53                              	PUSH	EBX
+    22 00000004 83 EC 24                        	SUB	ESP,36
+    23 00000007 8D 5D DC                        	LEA	EBX,DWORD [-36+EBP]
+    24 0000000A 6A 1E                           	PUSH	30
+    25 0000000C 53                              	PUSH	EBX
+    26 0000000D E8 [00000000]                   	CALL	_api_command
+    27 00000012 89 D8                           	MOV	EAX,EBX
+    28 00000014 5B                              	POP	EBX
+    29 00000015 5A                              	POP	EDX
+    30 00000016 80 7D DC 20                     	CMP	BYTE [-36+EBP],32
+    31 0000001A 7E 06                           	JLE	L18
+    32 0000001C                                 L5:
+    33 0000001C 40                              	INC	EAX
+    34 0000001D 80 38 20                        	CMP	BYTE [EAX],32
+    35 00000020 7F FA                           	JG	L5
+    36 00000022                                 L18:
+    37 00000022 80 38 20                        	CMP	BYTE [EAX],32
+    38 00000025 74 44                           	JE	L9
+    39 00000027                                 L20:
+    40 00000027 50                              	PUSH	EAX
+    41 00000028 E8 [00000000]                   	CALL	_api_fopen
+    42 0000002D 59                              	POP	ECX
+    43 0000002E 89 C3                           	MOV	EBX,EAX
+    44 00000030 85 C0                           	TEST	EAX,EAX
+    45 00000032 74 2A                           	JE	L10
+    46 00000034                                 L15:
+    47 00000034 53                              	PUSH	EBX
+    48 00000035 8D 45 DB                        	LEA	EAX,DWORD [-37+EBP]
+    49 00000038 6A 01                           	PUSH	1
+    50 0000003A 50                              	PUSH	EAX
+    51 0000003B E8 [00000000]                   	CALL	_api_fread
+    52 00000040 83 C4 0C                        	ADD	ESP,12
+    53 00000043 85 C0                           	TEST	EAX,EAX
+    54 00000045 74 0D                           	JE	L16
+    55 00000047 0F BE 45 DB                     	MOVSX	EAX,BYTE [-37+EBP]
+    56 0000004B 50                              	PUSH	EAX
+    57 0000004C E8 [00000000]                   	CALL	_api_printc
+    58 00000051 5A                              	POP	EDX
+    59 00000052 EB E0                           	JMP	L15
+    60 00000054                                 L16:
+    61 00000054 E8 [00000000]                   	CALL	_api_return
+    62 00000059 8B 5D FC                        	MOV	EBX,DWORD [-4+EBP]
+    63 0000005C C9                              	LEAVE
+    64 0000005D C3                              	RET
+    65 0000005E                                 L10:
+    66 0000005E 68 [00000000]                   	PUSH	LC0
+    67 00000063 E8 [00000000]                   	CALL	_api_printl
+    68 00000068 58                              	POP	EAX
+    69 00000069 EB E9                           	JMP	L16
+    70 0000006B                                 L9:
+    71 0000006B 40                              	INC	EAX
+    72 0000006C 80 38 20                        	CMP	BYTE [EAX],32
+    73 0000006F 74 FA                           	JE	L9
+    74 00000071 EB B4                           	JMP	L20

@@ -1,0 +1,156 @@
+;
+;=================================================
+    CYLS EQU 10     ;定义最大装载柱面号常数CYLS_MAX,最大装载到第10柱面
+
+	ORG 0x7c00	;指明程序装载地址。#主引导扇区拷贝到内存0x7c00(与软盘拷贝位置一致)。0x00007c000~0x00007dff:启动分区装载地址(硬规定，IBM)
+                ;FAT12文件系统，引导程序(占512B,起C0-H0-S1)、FAT分配表1(占4068B,0-0-2~0-0-10)，FAT分配表2(0-0-11~1-0-1)，根目录、文件数据区
+;描述用于标准FAT12格式的软盘(FAT12格式软盘标准引导代码)
+	JMP	entry           ;跳转到程序核心入口
+	DB  0x90	        ;[0]跳转指令（相当于"JMP 0x4e”，亦可用短跳<如jump short start>后加一个nop空指令补足3字节）
+	DB  "NNOS_IPL"		;[3]引导区名称（可自定义，须为8字节，不满8字节用空格填充）
+	DW  512				;[11]每个扇区<sector>的大小（单位为字节，默认512字节。逻辑<线性>扇区经转换可得CHS磁盘参数）
+	DB  1				;[13]簇<cluster>大小(单位为扇区，默认为1个扇区，可通过调整簇大小调整分区容量，可取1,2,4,8,16,32,64和128。FAT12只能管理4096簇，最大2M空间）
+	DW  0x20;1				;[14]FAT起始位置(一般从第1个扇区开始，亦即保留扇区数为1，保留1个扇区作为引导扇区）
+	DB	2				;[16]FAT表记录数(默认为2，两表内容相同，FAT1出错可用FAT2来恢复）
+	DW	0			;[17]根目录大小（即根目录下目录/文件最大数量，默认为224个。目录/文件名占用32B，根目录大小为224*32=7168B=7KB）
+	DW	0			;[19]逻辑扇区总数（即该磁盘大小，默认为2880<0x0b40>个扇区)
+	DB	0xf8			;[21]磁盘类型标识符(默认为0xf0，表示3.5寸高密度软盘。0f8h表示硬盘。)
+	DW	0				;[22]FAT长度（默认为9个扇区，操作系统计算根目录所在扇区=FAT表数*FAT表所占扇区数+隐藏扇区数；用户数据开始位置=根目录扇区位置+根目录所占扇区，FAT12下为224*32/512）
+	DW	0x3f				;[24]每个磁道<track>扇区数(默认为18，软盘默认值为18，此处须为18)
+	DW	0xff				;[26]磁头数(指磁盘面数，软盘为2面，正反面各一个，此处须为2)
+	DD	0				;[28]隐藏扇区数(默认为0。是引导扇区之前的隐藏扇区，此字段参与根目录、用户数据位置计算)
+	DD	0x0ff7			    ;[32]分区/磁盘逻辑扇区总数（大于65536使用此字段表示，否则此段置0，用偏移19处的字段来表示）
+	DD	0X01F8		;[36]物理驱动器号、[37]未使用位、[38]扩展引导标志
+	DW	0		;[39]卷标号码（卷序列号、磁盘号，默认为0）
+    DW  0
+    DD  2
+    DW  1
+    DW  6
+    TIMES   12 DB 0
+    DB  0X80
+    DB  0
+    DB  0X29   
+    DD  0    
+	TIMES 11 DB 0
+    DB  "FAT32    " 
+	
+;程序核心
+entry:				;程序核心入口程序段，由开头JMP跳入，相当于JMP 0x7c50b 
+        MOV AX,0		;初始化寄存器。#AX为通用寄存器(通常用作累加器)，SS为堆栈段寄存器,DS为数据段寄存器，ES为附加段寄存器
+		MOV SS,AX		;AX、SS、DS、ES全部初始化为0
+		MOV	SP,0x7c00 	;栈顶指针指向0x7c00
+		MOV	DS,AX       ;省略段寄存器会把DS作为默认段寄存器,MOV CX;[1234]相当于MOV CX,[DS:1234],即MOV CX,[DS*16+1234]。故DS须初始化为0。
+		;MOV	ES,AX
+		
+;读磁盘
+		MOV AX,0x0820   ;地址0x820写入给AX,再赋值给ES。无法直接赋值给ES寄存器(设计原因，硬规定)，0x7c00~0x7dff为启动区，0x7e00~0x9fbff供操作系统任意使用
+		MOV ES,AX       ;寄存器AX赋值给寄存器ES，偏移量为0x0820;BX为0。从内存0x0820处开始装载读取的硬盘数据，磁盘第2扇区装载在内存0x0820处
+		MOV CH,0        ;磁盘第0个柱面(自外向内递增，软盘共80个柱面,cylinder)，柱面编号从0开始
+		MOV DH,0        ;磁盘第0个磁头(磁头0正面、磁头1反面)，磁头编号从0开始
+		MOV CL,2        ;第2个扇区(软盘等分为18个扇区,sector)，扇区编号从1开始
+        MOV BX,63*1*CYLS-1
+        CALL READFAST
+        MOV [0X0FF0],CH
+        JMP 0XC200
+ERROR:
+MOV AX,0
+MOV ES,AX
+MOV SI,MSG        
+PUTLOOP:
+MOV AL,[SI]
+ADD SI,1
+CMP AL,0
+JE FIN
+mov ah,0x0e
+mov bx,15
+int 0x10
+jmp PUTLOOP
+FIN:
+HLT
+JMP FIN
+MSG:
+DB 0X0A,0X0A
+DB 'LOAD ERROR'
+DB 0X0A
+DB 0
+READFAST: 
+MOV AX,ES
+SHL AX,3
+AND AH,0X7F
+MOV AL,128
+SUB AL,AH
+MOV AH,BL
+CMP BH,0
+JE .SKIP1
+MOV AH,63
+.SKIP1:
+CMP AL,AH
+JBE .SKIP2
+MOV AL,AH
+.SKIP2:
+MOV AH,64
+SUB AH,CL
+CMP AL,AH
+JBE .SKIP3
+.SKIP3:
+PUSH BX      
+        
+readloop:               ;循环读取下一个扇区的开始处，读盘无错、尚未读到第18扇区时读完一个扇区会回到此处继续读下一个扇区	
+	;	MOV	SI,0		;读盘失败次数的SI初始为0，开始读新的扇区
+retry:                  ;retry程序段，若读盘失败，则重试直至满5次。
+		MOV AH,0X02     ;读盘，AH=0x02为读盘
+		MOV AL,1        ;读取1个扇区，AL用于指定扇区号
+		MOV BX,0        ;基址寄存器置0，ES:BX 为缓冲地址，校验及寻道时不使用
+		MOV DL,0x80     ;驱动器A，DL用于指定驱动器号。此句和下句之间若改为AL=17即调用磁盘BIOS的函数来连续读取18个扇区，因软盘无法跨越多个磁道，故不适用。
+PUSH ES
+PUSH DX
+PUSH CX
+PUSH AX        
+        INT 0x13        ;中断，调用磁盘BIOS(硬规定)，至此若无错则读盘成功。此语句执行结果影响CF标志位，无错置1，有错置0。
+        ;JNC oky        ;没出错则跳转到okey（亦可直接跳转到fin不显示信息)，JNC判断进位标志CF，为0时跳转
+        JNC next        ;无错则跳至next程序段，从而继续读盘到第18扇区
+        ;ADD SI,1        ;若读盘失败，则上一句不会跳转，继续执行到此处，将出错记录数加1
+        ;CMP SI,5        ;比较SI与5，比较结果影响零标志寄存器的值;#ZF=1(相等)，ZF=0(不相等），SF=1(左<右)，[ZF,SF]=[1,1](左<=右)，SF=0(左>=右)，[ZF,SF]=[0,0](左>右)
+        ;JAE error       ;SI中的重试次数比较结果与5相等时，跳转到error。JAE(jump if above or equal)指令在SI>=5时跳转。
+		;JC  error      ;出错时跳转到error段，JC(jump if carry)，进位标志(CF,carry flag)为1时跳转
+        ;JNC oky        ;不出错继续跳转到oky段运行,oky段在显示器上显示信息,oky已更名为showmsg
+        MOV AH,0x00     ;读盘出错但出错次数小于无时，JNC、JAE处都未跳转，继续执行此指令，将寄存器AH重置为0，复位
+        MOV DL,0x80     ;驱动器A
+        INT 0x13        ;中断，系统复位，重置驱动器，复位软盘状态
+POP AX
+POP CX
+POP DX
+POP ES       
+       JMP retry       ;跳转到retry从头重新尝试读盘 
+next:                   ;next程序段，若重试次数小于5、读盘无错，则跳转到此处，继续读盘到第18扇区
+        POP AX
+        POP CX
+        POP DX
+        POP BX
+        SHR BX,5
+        MOV AH,0
+        ADD BX,AX
+        SHL BX,5
+        MOV BX,ES       ;当前段地址(实际地址位ES*16+BX)赋值给累加器AX
+        POP BX
+        SUB BX,AX
+        JZ .RET
+        ADD CL,AL   ;将当前地址后移0x0020（00100000即32,32*16+0=512，为一个扇区大小）存入累加器AX，即AX=AX+0x0020。这两句可直接写为ADD BX,512
+        CMP CL,63
+        JBE READFAST
+        MOV CL,1
+        ADD DH,1
+        CMP DH,6
+        JB READFAST
+        MOV DH,0
+        ADD CH,1
+        JMP READFAST
+       
+.RET   RET
+
+
+  
+		
+        ;#RESB 0x1fe-$				;填写0x00，直到0x001fe,nask特有语法
+        TIMES  231  DB 0        ;#[兼容nasm][代]。填写0x00[nasm版]，填写到510字节，末2位留给结束标志
+        DB 0x55,0xaa				;结束标志

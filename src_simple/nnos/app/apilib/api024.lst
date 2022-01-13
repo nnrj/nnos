@@ -1,0 +1,15 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "api024.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_api_fsize
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _api_fsize:       		;int api_fsize(int fileHanle, int mode);
+    11 00000000 BA 00000018                     	MOV  EDX,24
+    12 00000005 8B 44 24 04                     	MOV  EAX,[ESP+4]   	;fileHanle
+    13 00000009 8B 4C 24 08                     	MOV  ECX,[ESP+8]   	;mode
+    14 0000000D CD 40                           	INT  0x40
+    15 0000000F C3                              	RET

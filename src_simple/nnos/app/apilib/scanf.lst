@@ -1,0 +1,36 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_api_getkey
+     7 00000000                                 	EXTERN	_vsscanf
+     8 00000000                                 [FILE "scanf.c"]
+     9                                          [SECTION .text]
+    10 00000000                                 	GLOBAL	_scanf
+    11 00000000                                 _scanf:
+    12 00000000 55                              	PUSH	EBP
+    13 00000001 89 E5                           	MOV	EBP,ESP
+    14 00000003 53                              	PUSH	EBX
+    15 00000004 81 EC 000003F0                  	SUB	ESP,1008
+    16 0000000A 31 DB                           	XOR	EBX,EBX
+    17 0000000C                                 L7:
+    18 0000000C 6A 01                           	PUSH	1
+    19 0000000E E8 [00000000]                   	CALL	_api_getkey
+    20 00000013 5A                              	POP	EDX
+    21 00000014 3C 0D                           	CMP	AL,13
+    22 00000016 74 10                           	JE	L3
+    23 00000018 88 84 1D FFFFFC0C               	MOV	BYTE [-1012+EBP+EBX*1],AL
+    24 0000001F 43                              	INC	EBX
+    25 00000020 81 FB 000003E7                  	CMP	EBX,999
+    26 00000026 7E E4                           	JLE	L7
+    27 00000028                                 L3:
+    28 00000028 8D 45 0C                        	LEA	EAX,DWORD [12+EBP]
+    29 0000002B 50                              	PUSH	EAX
+    30 0000002C 8D 85 FFFFFC0C                  	LEA	EAX,DWORD [-1012+EBP]
+    31 00000032 FF 75 08                        	PUSH	DWORD [8+EBP]
+    32 00000035 50                              	PUSH	EAX
+    33 00000036 E8 [00000000]                   	CALL	_vsscanf
+    34 0000003B 8B 5D FC                        	MOV	EBX,DWORD [-4+EBP]
+    35 0000003E C9                              	LEAVE
+    36 0000003F C3                              	RET

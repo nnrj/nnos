@@ -1,10 +1,10 @@
 # NNOS     
 
-<font size=2 color=red>ATTENTION : If your IP from  China,the picture in this file may be load fail。</font>     
+<font size=2 color=red>ATTENTION : If your IP from  Chinese mainland, the picture in this file may be load fail。</font>     
 
 *Update date:2020-09-15*
 
-A Mini Operating System based on x86 Architecture
+## A Mini Operating System based on x86 Architecture
 
 > Email:tianhehechu@qq.com  
 >
@@ -24,9 +24,7 @@ A Mini Operating System based on x86 Architecture
 
 ![Image text](https://github.com/nnrj/nnos/blob/master/doc/img/NNOS_Framework.jpg)  
 
-### 项目计划：  
-
-*Project Plan *
+## Project Plan
 
 - Implement clock and calendar;
 - Improve file system,implement computing app in OS;
@@ -52,7 +50,7 @@ A Mini Operating System based on x86 Architecture
 
 **QQ Group: 757581301**
 
-Team members: 天河何处
+Team members: 天河何处 张继军
 
 ***
 

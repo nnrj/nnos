@@ -1,0 +1,20 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "api008.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_api_initmalloc
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _api_initmalloc:	; void api_initmalloc(void);
+    11 00000000 53                              		PUSH	EBX
+    12 00000001 BA 00000008                     		MOV		EDX,8
+    13 00000006 2E 8B 1D 00000020               		MOV		EBX,[CS:0x0020]		; malloc領域の番地
+    14 0000000D 89 D8                           		MOV		EAX,EBX
+    15 0000000F 05 00008000                     		ADD		EAX,32*1024			; 32KBを足す
+    16 00000014 2E 8B 0D 00000000               		MOV		ECX,[CS:0x0000]		; データセグメントの大きさ
+    17 0000001B 29 C1                           		SUB		ECX,EAX
+    18 0000001D CD 40                           		INT		0x40
+    19 0000001F 5B                              		POP		EBX
+    20 00000020 C3                              		RET

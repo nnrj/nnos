@@ -1,0 +1,8 @@
+# dir 不提交的目录
+# /node_modules
+​
+# file 不提交的文件
+sync.ffs_db
+​
+# *.xxx 不提交后缀名为「.xxx」的文件
+# *.log

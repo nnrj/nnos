@@ -1,0 +1,64 @@
+; Copyright (C) 2005 Filip Navara, Damien Mascord
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = System
+ClassGuid   = {4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider    = %Author%
+DriverVer   = 04/28/2005,1.0
+
+[DestinationDirs]
+DefaultDestDir    = 12
+KQemu.DriverFiles = 12
+KQemu.InfFiles    = 10,inf
+
+[SourceDisksNames]
+1 = %InstDisk%
+   
+[SourceDisksFiles]
+kqemu.sys = 1
+
+[Manufacturer]
+%Author% = KQemu.Manufacturer
+
+[KQemu.Manufacturer]
+%Description% = DefaultInstall,kqemu
+
+[DefaultInstall.NT]
+CopyFiles = KQemu.DriverFiles, KQemu.InfFiles
+AddReg = KQemu.UninstallRegistry
+
+[DefaultInstall.NT.Services]
+AddService = kqemu,,KQemuService_Inst
+
+[Uninstall.NT]
+DelFiles = KQemu.DriverFiles, KQemu.InfFiles
+DelReg = KQemu.UninstallRegistry
+
+[Uninstall.NT.Services]
+DelService = kqemu,0x00000200
+
+[KQemu.DriverFiles]
+kqemu.sys
+
+[KQemu.InfFiles]
+kqemu.inf
+
+[KQemu.UninstallRegistry]
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KQEMU,"DisplayName",,%Description%
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KQEMU,"UninstallString",0x20000,"RunDll32 setupapi.dll,InstallHinfSection Uninstall 132 %SystemRoot%\inf\kqemu.inf"
+
+[KQemuService_Inst]
+DisplayName   = %Description%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %12%\kqemu.sys
+
+[Strings]
+Author = "Fabrice Bellard"
+Description = "KQEMU virtualisation module for QEMU"
+InstDisk = "KQEMU Install Disk"
+SERVICE_KERNEL_DRIVER = 1
+SERVICE_DEMAND_START = 3
+SERVICE_ERROR_NORMAL = 1

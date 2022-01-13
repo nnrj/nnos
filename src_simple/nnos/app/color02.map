@@ -1,0 +1,37 @@
+text size :    451(0x001C3)
+data size :     24(0x00018)
+bss  size :      0(0x00000)
+
+0x00000024 : (.text)
+0x00000024 : _NNOSMain
+0x000000CA : _rgb2pal
+0x00000151 : _api_return
+0x00000151 : (.text)
+0x00000158 : _api_window
+0x00000158 : (.text)
+0x0000017A : _api_initmalloc
+0x0000017A : (.text)
+0x0000019B : _api_malloc
+0x0000019B : (.text)
+0x000001B0 : _api_refreshwin
+0x000001B0 : (.text)
+0x000001D2 : _api_getkey
+0x000001D2 : (.text)
+0x000001DE : (.text)
+0x000001DE : _NNOSStartup
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000400 : (.data)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)

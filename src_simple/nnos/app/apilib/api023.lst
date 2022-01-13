@@ -1,0 +1,18 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "api023.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_api_fseek
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _api_fseek:				;void api_fseek(int fileHanle, int offset, int mode);
+    11 00000000 53                              	PUSH EBX
+    12 00000001 BA 00000017                     	MOV  EDX,23
+    13 00000006 8B 44 24 08                     	MOV  EAX,[ESP+8]   	;fileHanle
+    14 0000000A 8B 4C 24 10                     	MOV  ECX,[ESP+16]  	;mode
+    15 0000000E 8B 5C 24 0C                     	MOV  EBX,[ESP+12]  	;offset
+    16 00000012 CD 40                           	INT  0x40
+    17 00000014 5B                              	POP  EBX
+    18 00000015 C3                              	RET

@@ -1,0 +1,29 @@
+操作系统：Windows10或Linux
+编辑器：vscode
+汇编编译器:TASM
+其他：VMWare Workstation或其他虚拟机软件，配置Windows xp或MS-DOS虚拟机；dd.exe工具；bochs虚拟机
+
+一、
+1.在vscode中安装MASM/TASM插件；
+2.用vscode打开B.ASM；
+3.在vscode中右键-打开DOS环境；
+4.在DOS Player中使用TASM编译B.ASM，编译命令：tasm b.asm -o b.obj；（不含末尾分号，下同）
+5.在DOS Player中使用tlink，链接b.obj，命令：tlink b.obj，此时本目录下出现b.exe；
+6.在DOS Player中使用TASM编译CL.ASM，编译命令：tasm cl.asm -o cl.obj；
+7.在DOS Player中使用tlink，以32位模式链接cl.obj，命令：tlink cl.obj /3，此时本目录下出现cl.exe；；
+8.打开Windows XP虚拟机，创建一个test文件夹，将本目录下编译链接完成的b.exe和cl.exe复制到该文件夹中；
+9.在Windows XP虚拟机中打开cmd.exe，进入test文件夹，使用exe2bin命令，将b.exe和cl.exe分别转换为b.bin和cl.bin。命令：exe2bin b.exe；
+10.使用dd.exe（加到系统环境变量中）生成一个1.44MB或更大的空硬盘img镜像，命令；dd if=xx. bin of=mbr.img bs=512 count=2880
+11.使用dd命令将b.bin和cl.bin先后写入到mbr.img中，命令：dd if=b.bin of=mbr.img bs=512 count=1，命令：dd if=cl. bin of=mbr.img bs=512 count=4 seek=2；
+12.配置bochs文件，配置文件参考../test中的bochsrc.bxrc；
+13.Windows下双击启动bochsrc.bxrc，启动mbr.img；Linux下使用命令 ./bochs，然后输入c回车。
+
+二、
+1.cc1 kernelC.c -o kernelC.gas
+2.gas2nask kernelC.gas kernelC.nas
+3.nask kernelC.nas kernelC.obj kernelC.lst
+4.obj2bim @haribote.rul out:k.bin stack:3136K map:kernelC.map kernelC.obj
+5.copy /b cl.bin+k.bin loader.bin
+6.dd if=loader.bin of=test.img bs=512 count=4 seek=2
+7.Windows下双击启动bochsrc.bxrc，启动mbr.img；Linux下使用命令 ./bochs，然后输入c回车。
+

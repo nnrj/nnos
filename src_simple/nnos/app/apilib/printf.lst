@@ -1,0 +1,31 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_vsprintf
+     7 00000000                                 	EXTERN	_api_printl
+     8 00000000                                 [FILE "printf.c"]
+     9                                          [SECTION .text]
+    10 00000000                                 	GLOBAL	_printf
+    11 00000000                                 _printf:
+    12 00000000 55                              	PUSH	EBP
+    13 00000001 89 E5                           	MOV	EBP,ESP
+    14 00000003 56                              	PUSH	ESI
+    15 00000004 53                              	PUSH	EBX
+    16 00000005 81 EC 000003F0                  	SUB	ESP,1008
+    17 0000000B 8D 45 0C                        	LEA	EAX,DWORD [12+EBP]
+    18 0000000E 8D 9D FFFFFC08                  	LEA	EBX,DWORD [-1016+EBP]
+    19 00000014 50                              	PUSH	EAX
+    20 00000015 FF 75 08                        	PUSH	DWORD [8+EBP]
+    21 00000018 53                              	PUSH	EBX
+    22 00000019 E8 [00000000]                   	CALL	_vsprintf
+    23 0000001E 53                              	PUSH	EBX
+    24 0000001F 89 C6                           	MOV	ESI,EAX
+    25 00000021 E8 [00000000]                   	CALL	_api_printl
+    26 00000026 8D 65 F8                        	LEA	ESP,DWORD [-8+EBP]
+    27 00000029 89 F0                           	MOV	EAX,ESI
+    28 0000002B 5B                              	POP	EBX
+    29 0000002C 5E                              	POP	ESI
+    30 0000002D 5D                              	POP	EBP
+    31 0000002E C3                              	RET

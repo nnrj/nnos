@@ -1,0 +1,7 @@
+;API病毒
+;[INSTRSET "i486"]
+[BITS 32]
+	MOV EDX,123456789
+	INT 0x40 			;调用有漏洞的API
+	MOV EDX,4
+	INT 0x40

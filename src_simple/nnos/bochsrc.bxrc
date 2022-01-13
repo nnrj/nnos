@@ -1,0 +1,28 @@
+###############################################################
+# bochsrc.bxrc file for Finix.
+###############################################################
+
+# how much memory the emulated machine will have
+megs: 32
+
+# filename of ROM images
+# BIOS已经修改，地址可以不加，可以根据文件大小进行推断，如里加地址要与文件大小相匹配
+romimage: file=$BXSHARE/BIOS-bochs-latest
+vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
+
+# what disk images will be used 
+# 配置镜像名
+floppya: 1_44=nnos.img, status=inserted
+
+# choose the boot disk.
+boot: a
+
+# where do we send log messages?
+log: ./ini/bochsout.txt
+
+# disable the mouse, since Finix is text only
+mouse: enabled=0
+
+# enable key mapping, using US layout as default.
+# 键盘的映射方式也改变了
+keyboard: keymap=$BXSHARE/keymaps/x11-pc-us.map

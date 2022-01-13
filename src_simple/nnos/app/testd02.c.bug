@@ -1,0 +1,9 @@
+#include "api.h"
+//#include <stdio.h>
+
+void NNOSMain(){
+	int a;
+	scanf("%d",&a);
+	printf("%d\n",a);
+	exit(1);
+}

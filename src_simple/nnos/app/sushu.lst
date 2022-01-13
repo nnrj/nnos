@@ -1,0 +1,60 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	__alloca
+     7 00000000                                 	EXTERN	_api_return
+     8 00000000                                 	EXTERN	_sprintf
+     9 00000000                                 	EXTERN	_api_printl
+    10 00000000                                 [FILE "sushu.c"]
+    11                                          [SECTION .data]
+    12 00000000                                 LC0:
+    13 00000000 25 64 20 00                     	DB	"%d ",0x00
+    14                                          [SECTION .text]
+    15 00000000                                 	GLOBAL	_NNOSMain
+    16 00000000                                 _NNOSMain:
+    17 00000000 55                              	PUSH	EBP
+    18 00000001 B8 00002718                     	MOV	EAX,10008
+    19 00000006 89 E5                           	MOV	EBP,ESP
+    20 00000008 56                              	PUSH	ESI
+    21 00000009 53                              	PUSH	EBX
+    22 0000000A 31 F6                           	XOR	ESI,ESI
+    23 0000000C E8 [00000000]                   	CALL	__alloca
+    24 00000011                                 L6:
+    25 00000011 C6 84 35 FFFFD8E8 00            	MOV	BYTE [-10008+EBP+ESI*1],0
+    26 00000019 46                              	INC	ESI
+    27 0000001A 81 FE 0000270F                  	CMP	ESI,9999
+    28 00000020 7E EF                           	JLE	L6
+    29 00000022 BE 00000002                     	MOV	ESI,2
+    30 00000027                                 L17:
+    31 00000027 80 BC 35 FFFFD8E8 00            	CMP	BYTE [-10008+EBP+ESI*1],0
+    32 0000002F 74 15                           	JE	L23
+    33 00000031                                 L9:
+    34 00000031 46                              	INC	ESI
+    35 00000032 81 FE 0000270F                  	CMP	ESI,9999
+    36 00000038 7E ED                           	JLE	L17
+    37 0000003A E8 [00000000]                   	CALL	_api_return
+    38 0000003F 8D 65 F8                        	LEA	ESP,DWORD [-8+EBP]
+    39 00000042 5B                              	POP	EBX
+    40 00000043 5E                              	POP	ESI
+    41 00000044 5D                              	POP	EBP
+    42 00000045 C3                              	RET
+    43 00000046                                 L23:
+    44 00000046 56                              	PUSH	ESI
+    45 00000047 8D 9D FFFFD8E0                  	LEA	EBX,DWORD [-10016+EBP]
+    46 0000004D 68 [00000000]                   	PUSH	LC0
+    47 00000052 53                              	PUSH	EBX
+    48 00000053 E8 [00000000]                   	CALL	_sprintf
+    49 00000058 53                              	PUSH	EBX
+    50 00000059 E8 [00000000]                   	CALL	_api_printl
+    51 0000005E 83 C4 10                        	ADD	ESP,16
+    52 00000061 8D 04 36                        	LEA	EAX,DWORD [ESI+ESI*1]
+    53 00000064 3D 0000270F                     	CMP	EAX,9999
+    54 00000069 7F C6                           	JG	L9
+    55 0000006B                                 L16:
+    56 0000006B C6 84 05 FFFFD8E8 01            	MOV	BYTE [-10008+EBP+EAX*1],1
+    57 00000073 01 F0                           	ADD	EAX,ESI
+    58 00000075 3D 0000270F                     	CMP	EAX,9999
+    59 0000007A 7E EF                           	JLE	L16
+    60 0000007C EB B3                           	JMP	L9

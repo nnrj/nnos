@@ -1,0 +1,17 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "api017.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_api_inittimer
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _api_inittimer:		; void api_inittimer(int timer, int data);
+    11 00000000 53                              		PUSH	EBX
+    12 00000001 BA 00000011                     		MOV		EDX,17
+    13 00000006 8B 5C 24 08                     		MOV		EBX,[ESP+ 8]		; timer
+    14 0000000A 8B 44 24 0C                     		MOV		EAX,[ESP+12]		; data
+    15 0000000E CD 40                           		INT		0x40
+    16 00000010 5B                              		POP		EBX
+    17 00000011 C3                              		RET

@@ -1,0 +1,26 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_api_free
+     7 00000000                                 [FILE "free.c"]
+     8                                          [SECTION .text]
+     9 00000000                                 	GLOBAL	_free
+    10 00000000                                 _free:
+    11 00000000 55                              	PUSH	EBP
+    12 00000001 89 E5                           	MOV	EBP,ESP
+    13 00000003 8B 45 08                        	MOV	EAX,DWORD [8+EBP]
+    14 00000006 85 C0                           	TEST	EAX,EAX
+    15 00000008 74 12                           	JE	L1
+    16 0000000A 8D 50 F0                        	LEA	EDX,DWORD [-16+EAX]
+    17 0000000D 8B 40 F0                        	MOV	EAX,DWORD [-16+EAX]
+    18 00000010 83 C0 10                        	ADD	EAX,16
+    19 00000013 50                              	PUSH	EAX
+    20 00000014 52                              	PUSH	EDX
+    21 00000015 E8 [00000000]                   	CALL	_api_free
+    22 0000001A 58                              	POP	EAX
+    23 0000001B 5A                              	POP	EDX
+    24 0000001C                                 L1:
+    25 0000001C C9                              	LEAVE
+    26 0000001D C3                              	RET

@@ -1,0 +1,17 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [BITS 32]
+     4 00000000                                 [FILE "api009.nas"]
+     5 00000000                                 
+     6 00000000                                 		GLOBAL	_api_malloc
+     7 00000000                                 
+     8                                          [SECTION .text]
+     9 00000000                                 
+    10 00000000                                 _api_malloc:		; char *api_malloc(int size);
+    11 00000000 53                              		PUSH	EBX
+    12 00000001 BA 00000009                     		MOV		EDX,9
+    13 00000006 2E 8B 1D 00000020               		MOV		EBX,[CS:0x0020]
+    14 0000000D 8B 4C 24 08                     		MOV		ECX,[ESP+8]			; size
+    15 00000011 CD 40                           		INT		0x40
+    16 00000013 5B                              		POP		EBX
+    17 00000014 C3                              		RET
