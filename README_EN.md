@@ -50,7 +50,7 @@
 
 **QQ Group: 757581301**
 
-Team members: 天河何处 张继军 老白
+Team members: 天河何处 张继军、老白
 
 ***
 
