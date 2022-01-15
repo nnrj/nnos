@@ -1,3 +1,4 @@
+set TOOL_HOME = ..\tools\
 xcopy /y ini\Makefile_win.mak Makefile
 xcopy /y ipl.asm ipl.nas
 xcopy /y ipl32.asm ipl32.nas
@@ -9,5 +10,5 @@ echo syshead.nas ;[INSTRSET [INSTRSET|.\ini\getnas.exe
 echo osfun.nas ;[ [|.\ini\getnas.exe
 echo syshead.nas ALIGN ALIGNB|.\ini\getnas.exe
 ::echo make run | powershell
-make run
+%TOOL_HOME%make run
 powershell

@@ -1,3 +1,4 @@
+SHELL=cmd
 TOOLPATH = ../tools/
 LIBPATH = ../tools/nnos/
 SRCPATH = ./

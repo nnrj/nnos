@@ -1,3 +1,4 @@
+SHELL=powershell
 OBJ_BOOTPACK = bootpack.obj osfun.obj fontbase.obj \
 		gdtidt.obj interrupt.obj fifo.obj memery.obj graphics.obj devices.obj cover.obj timer.obj task.obj file.obj console.obj string.obj service.obj
 

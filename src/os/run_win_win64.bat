@@ -1,3 +1,4 @@
+set MAKE_HOME = ..\tools\make\
 xcopy /y ini\Makefile_win.mak Makefile
-make run
+%MAKE_HOME%make run
 powershell

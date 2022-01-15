@@ -1,3 +1,4 @@
+SHELL=powershell
 TOOLPATH = ../tools/
 LIBPATH = ../tools/nnos/
 SRCPATH = ./

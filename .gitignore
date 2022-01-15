@@ -3,6 +3,11 @@
 ​
 # file 不提交的文件
 sync.ffs_db
+# /src/os/Makefile
+/src.old/tools/qemu/fdimage0.bin
+# /src.old/nnos/Makefile
+# /src_simple/nnos/Makefile
+
 ​
 # *.xxx 不提交后缀名为「.xxx」的文件
 # *.log
