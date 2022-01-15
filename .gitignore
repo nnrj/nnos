@@ -3,10 +3,14 @@
 ​
 # file 不提交的文件
 sync.ffs_db
-# /src/os/Makefile
+/src/nnos/Makefile
+/src/nnos/int/bochsout.log
+/src/nnos/int/bochsout_linux.log
 /src.old/tools/qemu/fdimage0.bin
-# /src.old/nnos/Makefile
-# /src_simple/nnos/Makefile
+/src.old/nnos/Makefile
+/src.old/nnos/ini/bochsout.log
+/src_simple/nnos/Makefile
+/src_simple/nnos/ini/bochsout.log
 
 ​
 # *.xxx 不提交后缀名为「.xxx」的文件

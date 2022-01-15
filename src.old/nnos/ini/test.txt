@@ -1,5 +1,5 @@
 nnos,I'm a test file.
 It's second line.
 The OS was created in China.
-The author is Liu Dongxu.
+Authors are Tianhe, Jijun Zhang, Laobai.
 Email:tianhehechu@qq.com.
