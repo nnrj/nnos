@@ -1,0 +1,53 @@
+text size :    609(0x00261)
+data size :    200(0x000C8)
+bss  size :      0(0x00000)
+
+0x00000024 : (.text)
+0x00000024 : _NNOSMain
+0x00000174 : _api_return
+0x00000174 : (.text)
+0x0000017B : _api_window
+0x0000017B : (.text)
+0x0000019D : _api_ascwin
+0x0000019D : (.text)
+0x000001C5 : _api_boxwin
+0x000001C5 : (.text)
+0x000001ED : _api_initmalloc
+0x000001ED : (.text)
+0x0000020E : _api_malloc
+0x0000020E : (.text)
+0x00000223 : _api_point
+0x00000223 : (.text)
+0x00000241 : _api_closewin
+0x00000241 : (.text)
+0x0000024F : _api_getkey
+0x0000024F : (.text)
+0x0000025B : (.text)
+0x0000025B : _NNOSStartup
+0x00000264 : _rand
+0x00000264 : (.text)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000400 : (.data)
+0x000004C4 : (.data)
+0x000004C4 : _rand_seed
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)

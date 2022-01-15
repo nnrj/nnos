@@ -1,0 +1,36 @@
+text size :   1338(0x0053A)
+data size :     62(0x0003E)
+bss  size :      0(0x00000)
+
+0x00000024 : (.text)
+0x00000024 : _NNOSMain
+0x0000003F : (.text)
+0x0000003F : _api_printl
+0x0000004D : (.text)
+0x0000004D : _api_return
+0x00000054 : _exit
+0x00000054 : (.text)
+0x0000005D : _printf
+0x0000005D : (.text)
+0x0000008C : (.text)
+0x0000008C : _NNOSStartup
+0x00000095 : (.text)
+0x000000D1 : _strtoul0
+0x000001A4 : (.text)
+0x000001CC : _vsprintf
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000000 : (.data)
+0x00000400 : (.data)
+0x0000041E : (.data)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)
+0x00000000 : (.bss)

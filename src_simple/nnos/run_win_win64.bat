@@ -1,4 +1,4 @@
-xcopy /y ini\Makefile_win Makefile
+xcopy /y ini\Makefile_win.mak Makefile
 xcopy /y ipl.asm ipl.nas
 xcopy /y ipl32.asm ipl32.nas
 xcopy /y syshead.asm syshead.nas

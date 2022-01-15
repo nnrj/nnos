@@ -18,7 +18,7 @@ floppya: 1_44=nnos.img, status=inserted
 boot: a
 
 # where do we send log messages?
-log: ./ini/bochsout.txt
+log: ./ini/bochsout.log
 
 # disable the mouse, since Finix is text only
 mouse: enabled=0

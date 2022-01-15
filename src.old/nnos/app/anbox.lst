@@ -1,0 +1,63 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	__alloca
+     7 00000000                                 	EXTERN	_api_window
+     8 00000000                                 	EXTERN	_api_boxwin
+     9 00000000                                 	EXTERN	_api_getkey
+    10 00000000                                 	EXTERN	_api_return
+    11 00000000                                 [FILE "anbox.c"]
+    12                                          [SECTION .data]
+    13 00000000                                 LC0:
+    14 00000000 41 6E 62 6F 78 00               	DB	"Anbox",0x00
+    15                                          [SECTION .text]
+    16 00000000                                 	GLOBAL	_NNOSMain
+    17 00000000                                 _NNOSMain:
+    18 00000000 55                              	PUSH	EBP
+    19 00000001 B8 00002910                     	MOV	EAX,10512
+    20 00000006 89 E5                           	MOV	EBP,ESP
+    21 00000008 53                              	PUSH	EBX
+    22 00000009 E8 [00000000]                   	CALL	__alloca
+    23 0000000E 68 [00000000]                   	PUSH	LC0
+    24 00000013 68 000000FF                     	PUSH	255
+    25 00000018 8D 85 FFFFD6EC                  	LEA	EAX,DWORD [-10516+EBP]
+    26 0000001E 6A 46                           	PUSH	70
+    27 00000020 68 00000096                     	PUSH	150
+    28 00000025 50                              	PUSH	EAX
+    29 00000026 E8 [00000000]                   	CALL	_api_window
+    30 0000002B 68 000000FF                     	PUSH	255
+    31 00000030 6A 45                           	PUSH	69
+    32 00000032 89 C3                           	MOV	EBX,EAX
+    33 00000034 6A 22                           	PUSH	34
+    34 00000036 6A 32                           	PUSH	50
+    35 00000038 6A 00                           	PUSH	0
+    36 0000003A 50                              	PUSH	EAX
+    37 0000003B E8 [00000000]                   	CALL	_api_boxwin
+    38 00000040 83 C4 2C                        	ADD	ESP,44
+    39 00000043 68 000000FF                     	PUSH	255
+    40 00000048 6A 45                           	PUSH	69
+    41 0000004A 68 00000095                     	PUSH	149
+    42 0000004F 6A 32                           	PUSH	50
+    43 00000051 6A 73                           	PUSH	115
+    44 00000053 53                              	PUSH	EBX
+    45 00000054 E8 [00000000]                   	CALL	_api_boxwin
+    46 00000059 68 000000FF                     	PUSH	255
+    47 0000005E 6A 31                           	PUSH	49
+    48 00000060 6A 63                           	PUSH	99
+    49 00000062 6A 1E                           	PUSH	30
+    50 00000064 6A 32                           	PUSH	50
+    51 00000066 53                              	PUSH	EBX
+    52 00000067 E8 [00000000]                   	CALL	_api_boxwin
+    53 0000006C 83 C4 30                        	ADD	ESP,48
+    54 0000006F                                 L2:
+    55 0000006F 6A 01                           	PUSH	1
+    56 00000071 E8 [00000000]                   	CALL	_api_getkey
+    57 00000076 5A                              	POP	EDX
+    58 00000077 83 F8 0A                        	CMP	EAX,10
+    59 0000007A 75 F3                           	JNE	L2
+    60 0000007C E8 [00000000]                   	CALL	_api_return
+    61 00000081 8B 5D FC                        	MOV	EBX,DWORD [-4+EBP]
+    62 00000084 C9                              	LEAVE
+    63 00000085 C3                              	RET

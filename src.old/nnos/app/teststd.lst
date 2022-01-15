@@ -1,0 +1,26 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_printf
+     7 00000000                                 	EXTERN	_exit
+     8 00000000                                 [FILE "teststd.c"]
+     9                                          [SECTION .data]
+    10 00000000                                 LC0:
+    11 00000000 4E 4E 4F 53 00                  	DB	"NNOS",0x00
+    12 00000005                                 LC1:
+    13 00000005 48 65 6C 6C 6F 2C 25 73 5F 30   	DB	"Hello,%s_0.%d test std.",0x0A,0x00
+       0000000F 2E 25 64 20 74 65 73 74 20 73 
+       00000019 74 64 2E 0A 00 
+    14                                          [SECTION .text]
+    15 00000000                                 	GLOBAL	_NNOSMain
+    16 00000000                                 _NNOSMain:
+    17 00000000 55                              	PUSH	EBP
+    18 00000001 89 E5                           	MOV	EBP,ESP
+    19 00000003 6A 20                           	PUSH	32
+    20 00000005 68 [00000000]                   	PUSH	LC0
+    21 0000000A 68 [00000005]                   	PUSH	LC1
+    22 0000000F E8 [00000000]                   	CALL	_printf
+    23 00000014 6A 01                           	PUSH	1
+    24 00000016 E8 [00000000]                   	CALL	_exit

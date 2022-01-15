@@ -1,0 +1,57 @@
+     1 00000000                                 [FORMAT "WCOFF"]
+     2 00000000                                 [INSTRSET "i486p"]
+     3 00000000                                 [OPTIMIZE 1]
+     4 00000000                                 [OPTION 1]
+     5 00000000                                 [BITS 32]
+     6 00000000                                 	EXTERN	_api_alloctimer
+     7 00000000                                 	EXTERN	_api_inittimer
+     8 00000000                                 	EXTERN	_api_beep
+     9 00000000                                 	EXTERN	_api_settimer
+    10 00000000                                 	EXTERN	_api_getkey
+    11 00000000                                 	EXTERN	_api_return
+    12 00000000                                 [FILE "beep.c"]
+    13                                          [SECTION .text]
+    14 00000000                                 	GLOBAL	_NNOSMain
+    15 00000000                                 _NNOSMain:
+    16 00000000 55                              	PUSH	EBP
+    17 00000001 89 E5                           	MOV	EBP,ESP
+    18 00000003 57                              	PUSH	EDI
+    19 00000004 56                              	PUSH	ESI
+    20 00000005 53                              	PUSH	EBX
+    21 00000006 BB 01312D00                     	MOV	EBX,20000000
+    22 0000000B E8 [00000000]                   	CALL	_api_alloctimer
+    23 00000010 68 00000080                     	PUSH	128
+    24 00000015 89 C6                           	MOV	ESI,EAX
+    25 00000017 50                              	PUSH	EAX
+    26 00000018 E8 [00000000]                   	CALL	_api_inittimer
+    27 0000001D 5A                              	POP	EDX
+    28 0000001E 59                              	POP	ECX
+    29 0000001F                                 L7:
+    30 0000001F 53                              	PUSH	EBX
+    31 00000020 E8 [00000000]                   	CALL	_api_beep
+    32 00000025 6A 01                           	PUSH	1
+    33 00000027 56                              	PUSH	ESI
+    34 00000028 E8 [00000000]                   	CALL	_api_settimer
+    35 0000002D 6A 01                           	PUSH	1
+    36 0000002F E8 [00000000]                   	CALL	_api_getkey
+    37 00000034 83 C4 10                        	ADD	ESP,16
+    38 00000037 83 C0 80                        	ADD	EAX,-128
+    39 0000003A 75 16                           	JNE	L3
+    40 0000003C 89 D8                           	MOV	EAX,EBX
+    41 0000003E BA 00000064                     	MOV	EDX,100
+    42 00000043 89 D7                           	MOV	EDI,EDX
+    43 00000045 99                              	CDQ
+    44 00000046 F7 FF                           	IDIV	EDI
+    45 00000048 29 C3                           	SUB	EBX,EAX
+    46 0000004A 81 FB 00004E1F                  	CMP	EBX,19999
+    47 00000050 7F CD                           	JG	L7
+    48 00000052                                 L3:
+    49 00000052 6A 00                           	PUSH	0
+    50 00000054 E8 [00000000]                   	CALL	_api_beep
+    51 00000059 58                              	POP	EAX
+    52 0000005A 8D 65 F4                        	LEA	ESP,DWORD [-12+EBP]
+    53 0000005D 5B                              	POP	EBX
+    54 0000005E 5E                              	POP	ESI
+    55 0000005F 5F                              	POP	EDI
+    56 00000060 5D                              	POP	EBP
+    57 00000061 E9 [00000000]                   	JMP	_api_return

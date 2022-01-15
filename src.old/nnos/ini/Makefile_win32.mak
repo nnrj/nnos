@@ -12,13 +12,14 @@ IMGTOL	    = $(TOOLPATH)imgtol.com
 CC1         = $(TOOLPATH)cc1.exe -I$(LIBPATH) -Os -Wall -quiet
 GAS2NASK    = $(TOOLPATH)gas2nask.exe -a
 OBJ2BIM     = $(TOOLPATH)obj2bim.exe  
-BIM2NEX     = $(TOOLPATH)bim2nex.exe 
+BIM2NEX     = $(TOOLPATH)bim2nex_win32.exe 
 RULEFILE    = $(TOOLPATH)nnos/nnos.rul
 IMGTOL      = $(TOOLPATH)imgtol.com
 MAKEFONT	= $(TOOLPATH)makefont.exe
 BIN2OBJ		= $(TOOLPATH)bin2obj.exe
 COPY        = copy
 DEL         = del
+RM			= del
 
 #默认动作（执行不带参数的make时，默认执行make img）
 default :
@@ -52,12 +53,181 @@ bootpack.bin : bootpack.bim Makefile
 nnos.sys : syshead.bin bootpack.bin Makefile
 	$(COPY) /B syshead.bin+bootpack.bin nnos.sys 
 
-nnos.img : ipl.bin nnos.sys ./app/font/HZK16.fnt ./app/font/nihongo.fnt
+nnos.img : ipl.bin nnos.sys Makefile ./app/sushu.nex \
+		./app/helwin04.nex ./app/lines.nex ./app/snake.nex ./app/timers.nex \
+		./app/beep.nex ./app/color02.nex ./app/crack07.nex ./app/vim.nex \
+		./app/font/HZK16.fnt ./app/font/nihongo.fnt ./app/teststd.nex ./app/anbox.nex \
+		./app/lineball.nex ./app/alienwar.nex ./app/caltor.nex ./app/notepad.nex ./app/music.nex \
+		./app/picture/picture.nex
 	$(EDIMG)   imgin:../tools/fdimg0at.tek \
 		wbinimg src:ipl.bin len:512 from:0 to:0 \
 		copy from:nnos.sys to:@: \
 		copy from:./app/font/HZK16.fnt to:@: \
+		copy from:./app/vim.nex to:@: \
+		copy from:./app/notepad.nex to:@: \
+		copy from:./app/caltor.nex to:@: \
+		copy from:./app/music.nex to:@: \
+		copy from:./app/music/ltstar.mml to:@: \
+		copy from:./app/music/fate.mml to:@: \
+		copy from:./app/music/goodbye.mml to:@: \
+		copy from:./ini/test.txt to:@: \
+		copy from:./ini/test02.txt to:@: \
+		copy from:./app/sushu.nex to:@: \
+		copy from:./app/helwin04.nex to:@: \
+		copy from:./app/snake.nex to:@: \
+		copy from:./app/timers.nex to:@: \
+		copy from:./app/beep.nex to:@: \
+		copy from:./app/color02.nex to:@: \
+		copy from:./app/crack07.nex to:@: \
+		copy from:./app/teststd.nex to:@: \
+		copy from:./app/anbox.nex to:@: \
+		copy from:./app/lineball.nex to:@: \
+		copy from:./app/alienwar.nex to:@: \
+		copy from:./app/picture/cheng.jpg to:@: \
+		copy from:./app/picture/picture.nex to:@: \
 		imgout:nnos.img
+
+#copy from:./app/lifegame.nex to:@: \
+#copy from:./app/music/goodbye.mml to:@: \
+#copy from:./app/anbox.nex to:@: \
+#copy from:./app/helwin04.nex to:@: \
+#copy from:./app/lines.nex to:@: \
+#copy from:./app/picture/cheng.jpg to:@: \
+#copy from:./app/picture/picture.nex to:@: \
+#copy from:./app/music/happy.mml to:@: \
+#copy from:./app/music/goodbye.mml to:@: \		
+#copy from:./app/chk03.nex to:@: \		
+#copy from:./app/iroha.nex to:@: \
+#copy from:./app/font/nihongo.fnt to:@: \
+#copy from:./app/font/nihongo.frc to:@: \
+#copy from:./app/hello05.nex to:@: \
+#copy from:./app/ball.nex to:@: \
+#copy from:./lib/996ICU to:@: \
+
+./app/hello.nex : ./app/hello0.nas Makefile
+	$(NASK) ./app/hello0.nas ./app/hello0.nex ./app/hello0.lst
+
+./app/hello02.nex : ./app/hello02.nas Makefile
+	$(NASK) ./app/hello02.nas ./app/hello02.nex ./app/hello02.lst
+
+./app/a.bim : ./app/a.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/a.bim map:./app/a.map ./app/a.obj ./app/apilib.lib
+
+./app/a.nex : ./app/a.bim Makefile
+	$(BIM2NEX) ./app/a.bim ./app/a.nex 0
+
+./app/hello03.bim : ./app/hello03.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/hello03.bim map:./app/hello03.map ./app/hello03.obj ./app/apilib.lib
+
+./app/hello03.nex : ./app/hello03.bim Makefile
+	$(BIM2NEX) ./app/hello03.bim ./app/hello03.nex 0
+
+./app/hello04.bim : ./app/hello04.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/hello04.bim stack:1k map:./app/hello04.map \
+		./app/hello04.obj ./app/apilib.lib
+
+./app/hello04.nex : ./app/hello04.bim Makefile
+	$(BIM2NEX) ./app/hello04.bim ./app/hello04.nex 0
+
+./app/hello05.bim : ./app/hello05.obj Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/hello05.bim stack:1k map:./app/hello05.map ./app/hello05.obj
+
+./app/hello05.nex : ./app/hello05.bim Makefile
+	$(BIM2NEX) ./app/hello05.bim ./app/hello05.nex 0
+
+#./app/bug02.bim : ./app/bug02.obj ./app/apilib.lib Makefile
+#$(OBJ2BIM) @$(RULEFILE) out:./app/bug02.bim map:./app/bug02.map ./app/bug02.obj ./app/apilib.lib
+
+#./app/bug02.nex : ./app/bug02.bim Makefile
+#$(BIM2NEX) ./app/bug02.bim ./app/bug02.nex 0
+
+#./app/crack04.nex : ./app/crack04.asm Makefile
+#nasm ./app/crack04.asm -o ./app/crack04.nex	
+
+#./app/crack04.obj : ./app/crack04.asm Makefile
+#$(NASK) ./app/crack04.nas ./app/crack04.obj ./app/crack04.lst
+
+#./app/crack07.nex : ./app/crack07.asm Makefile
+#nasm ./app/crack07.asm -o ./app/crack07.nex	
+
+#./app/crack07.obj : ./app/crack07.asm Makefile
+#$(NASK) ./app/crack07.nas ./app/crack07.obj ./app/crack07.lst
+
+./app/crack07.bim : ./app/crack07.obj Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/crack07.bim stack:1k map:./app/crack07.map ./app/crack07.obj
+
+./app/crack07.nex : ./app/crack07.bim Makefile
+	$(BIM2NEX) ./app/crack07.bim ./app/crack07.nex 0k
+
+./app/helwin.bim : ./app/helwin.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/helwin.bim stack:1k map:./app/helwin.map \
+		./app/helwin.obj ./app/apilib.lib
+
+./app/helwin.nex : ./app/helwin.bim Makefile
+	$(BIM2NEX) ./app/helwin.bim ./app/helwin.nex 0
+
+./app/helwin02.bim : ./app/helwin02.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/helwin02.bim stack:1k map:./app/helwin02.map \
+		./app/helwin02.obj ./app/apilib.lib
+
+./app/helwin02.nex : ./app/helwin02.bim Makefile
+	$(BIM2NEX) ./app/helwin02.bim ./app/helwin02.nex 0
+
+./app/helwin03.bim : ./app/helwin03.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/helwin03.bim stack:1k map:./app/helwin03.map \
+		./app/helwin03.obj ./app/apilib.lib
+
+./app/helwin03.nex : ./app/helwin03.bim Makefile
+	$(BIM2NEX) ./app/helwin03.bim ./app/helwin03.nex 40k
+	
+./app/helwin04.bim : ./app/helwin04.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/helwin04.bim stack:8k map:./app/helwin04.map \
+		./app/helwin04.obj ./app/apilib.lib
+
+./app/helwin04.nex : ./app/helwin04.bim Makefile
+	$(BIM2NEX) ./app/helwin04.bim ./app/helwin04.nex 40k
+
+./app/points.bim : ./app/points.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/points.bim stack:1k map:./app/points.map \
+		./app/points.obj ./app/apilib.lib
+
+./app/points.nex : ./app/points.bim Makefile
+	$(BIM2NEX) ./app/points.bim ./app/points.nex 47k
+
+./app/points02.bim : ./app/points02.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/points02.bim stack:1k map:./app/points02.map \
+		./app/points02.obj ./app/apilib.lib
+
+./app/points02.nex : ./app/points02.bim Makefile
+	$(BIM2NEX) ./app/points02.bim ./app/points02.nex 47k
+
+./app/lines.bim : ./app/lines.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/lines.bim stack:1k map:./app/lines.map \
+		./app/lines.obj ./app/apilib.lib
+
+./app/lines.nex : ./app/lines.bim Makefile
+	$(BIM2NEX) ./app/lines.bim ./app/lines.nex 48k
+	
+#./app/ball.bim : ./app/ball.obj ./app/apilib.lib ./app/alloca.obj Makefile
+#$(OBJ2BIM) @$(RULEFILE) out:./app/ball.bim stack:1k map:./app/ball.map \
+#./app/ball.obj ./app/apilib.lib ./app/alloca.obj
+
+#./app/ball.nex : ./app/ball.bim Makefile
+#$(BIM2NEX) ./app/ball.bim ./app/ball.nex 60k
+
+./app/snake.bim : ./app/snake.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/snake.bim stack:1k map:./app/snake.map \
+		./app/snake.obj ./app/apilib.lib
+
+./app/snake.nex : ./app/snake.bim Makefile
+	$(BIM2NEX) ./app/snake.bim ./app/snake.nex 48k
+
+./app/timers.bim : ./app/timers.obj ./app/apilib.lib Makefile
+	$(OBJ2BIM) @$(RULEFILE) out:./app/timers.bim stack:1k map:./app/timers.map \
+		./app/timers.obj ./app/apilib.lib
+		
+./app/timers.nex : ./app/timers.bim Makefile
+	$(BIM2NEX) ./app/timers.bim ./app/timers.nex 40k
 	
 ./app/beep.bim : ./app/beep.obj ./app/apilib.lib Makefile
 	$(OBJ2BIM) @$(RULEFILE) out:./app/beep.bim stack:1k map:./app/beep.map \
@@ -111,6 +281,9 @@ nnos.img : ipl.bin nnos.sys ./app/font/HZK16.fnt ./app/font/nihongo.fnt
 ./app/vim.bim : ./app/vim.obj ./app/apilib.lib Makefile
 	$(OBJ2BIM) @$(RULEFILE) out:./app/vim.bim stack:1k map:./app/vim.map \
 		./app/vim.obj ./app/apilib.lib
+		
+./app/vim.nex : ./app/vim.bim Makefile
+	$(BIM2NEX) ./app/vim.bim ./app/vim.nex 0k
 	
 ./app/chlang.bim : ./app/chlang.obj ./app/apilib.lib Makefile
 	$(OBJ2BIM) @$(RULEFILE) out:./app/chlang.bim stack:1k map:./app/chlang.map \
@@ -193,6 +366,9 @@ nnos.img : ipl.bin nnos.sys ./app/font/HZK16.fnt ./app/font/nihongo.fnt
 ./app/notepad.bim : ./app/notepad.obj ./app/apilib.lib Makefile
 	$(OBJ2BIM) @$(RULEFILE) out:./app/notepad.bim stack:1024k map:./app/notepad.map \
 		./app/notepad.obj ./app/apilib.lib
+
+./app/notepad.nex : ./app/notepad.bim Makefile
+	$(BIM2NEX) ./app/notepad.bim ./app/notepad.nex 0k
 	
 ./app/music.bim : ./app/music.obj ./app/apilib.lib Makefile
 	$(OBJ2BIM) @$(RULEFILE) out:./app/music.bim stack:256k map:./app/music.map \
@@ -208,7 +384,12 @@ nnos.img : ipl.bin nnos.sys ./app/font/HZK16.fnt ./app/font/nihongo.fnt
 ./app/lifegame.nex : ./app/lifegame.bim Makefile
 	$(BIM2NEX) ./app/lifegame.bim ./app/lifegame.nex 40k
 
+# ./app/picture/bmp.bim : ./app/picture/bmp.obj ./app/picture/apilib.lib Makefile
+# $(OBJ2BIM) @$(RULEFILE) out:./app/bmp.bim map:./app/bmp.map ./app/picture/bmp.obj ./app/apilib.lib
 
+# ./app/picture/picture.bim : ./app/picture/picture.obj ./app/picture/jpeg.obj ./app/picture/bmp.obj ./app/apilib.lib Makefile
+# $(OBJ2BIM) @$(RULEFILE) out:./app/picture/picture.bim stack:4480k map:./app/picture/picture.map \
+# ./app/picture/picture.obj ./app/apilib.lib
 ./app/picture/picture.bim : ./app/picture/picture.obj ./app/picture/bmp.obj ./app/picture/jpeg.obj ./app/apilib.lib Makefile
 	$(OBJ2BIM) @$(RULEFILE) out:./app/picture/picture.bim map:./app/picture/picture.map stack:4480k \
 		./app/picture/picture.obj ./app/picture/jpeg.obj ./app/picture/bmp.obj ./app/apilib.lib
