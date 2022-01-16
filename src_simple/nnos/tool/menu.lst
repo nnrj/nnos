@@ -1,4 +1,0 @@
-map --mem (hd0,0)/nnos.img (fd0)
-map --hook
-chainloader (fd0)+1
-rootnoverify (fd0)

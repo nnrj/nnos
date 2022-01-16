@@ -1,6 +1,0 @@
-section loader vstart = 0x900
-mov sp, 0x900
-push byte 0x7
-push word 0x8
-push dword 0x9
-jmp $
