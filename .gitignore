@@ -9,8 +9,12 @@ sync.ffs_db
 /src.old/tools/qemu/fdimage0.bin
 /src.old/nnos/Makefile
 /src.old/nnos/ini/bochsout.log
+/src.old/nnos/ini/bochsout_linux.log
 /src_simple/nnos/Makefile
+/src_simple/tools/qemu/fdimage0.bin
 /src_simple/nnos/ini/bochsout.log
+/src_simple/nnos/ini/bochsout_linux.log
+
 
 ​
 # *.xxx 不提交后缀名为「.xxx」的文件
