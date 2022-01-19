@@ -1,15 +1,19 @@
 SHELL=cmd
 TOOLPATH = ../tools/
 LIBPATH = ../tools/nnos/
+GCCPATH = ../tools/MinGW64/x86_64-w64-mingw32/bin/
 SRCPATH = ./
 APPPATH = ./app/
-GCCPATH = ./tools/gcc_win32/
 
 MAKE	    = $(TOOLPATH)make/make.exe -r
 NASM		= $(TOOLPATH)nasm_win32/nasm.exe
 GCC			= $(GCCPATH)/gcc.exe
+OBJCOPY		= $(GCCPATH)/objcopy.exe
+OBJDUMP		= $(GCCPATH)/objdump.exe
+LD			= $(GCCPATH)/ld.exe
 QEMU		= $(TOOLPATH)qemu/qemu.exe
 BOCHS		= $(TOOLPATH)bochs/bochs.exe
+BOCHSDBG	= $(TOOLPATH)bochs/bochsdbg.exe
 BXIMAGE		= $(TOOLPATH)bochs/bximage.exe
 ECHO		= echo
 CD			= cd
@@ -66,6 +70,7 @@ endif
 # 通用文件生成规则
 %.bin : %.asm
 	$(NASM) $*.asm -o $*.bin
+
 %.o : %.c
 	$(GCC) $*.c -m32 -c  -ffreestanding -fno-builtin -o $*.o
 
@@ -104,17 +109,14 @@ endif
 ifneq ($(wildcard *.bin),)
 	$(RM) *.bin
 endif
+ifneq ($(wildcard *.elf),)
+	$(RM) *.elf
+endif
 ifneq ($(wildcard *.obj),)
 	$(RM) *.obj
 endif
 ifneq ($(wildcard *.o),)
 	$(RM) *.o
-endif
-ifneq ($(wildcard *.s),)
-	$(RM) *.s
-endif
-ifneq ($(wildcard *.S),)
-	$(RM) *.S
 endif
 ifneq ($(wildcard *.map),)
 	$(RM) *.map

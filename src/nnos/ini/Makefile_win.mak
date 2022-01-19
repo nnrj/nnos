@@ -1,13 +1,16 @@
 SHELL=powershell
 TOOLPATH = ../tools/
 LIBPATH = ../tools/nnos/
+GCCPATH = ../tools/MinGW64/bin/
 SRCPATH = ./
 APPPATH = ./app/
-GCCPATH = ./tools/gcc/
 
 MAKE	    = $(TOOLPATH)make/make.exe -r
 NASM		= $(TOOLPATH)nasm/nasm.exe
 GCC			= $(GCCPATH)/gcc.exe
+OBJCOPY		= $(GCCPATH)/objcopy.exe
+OBJDUMP		= $(GCCPATH)/objdump.exe
+LD			= $(GCCPATH)/ld.exe
 QEMU		= $(TOOLPATH)qemu/qemu.exe
 BOCHS		= $(TOOLPATH)bochs/bochs-win64.exe
 BOCHSDBG	= $(TOOLPATH)bochs/bochsdbg-win64.exe
@@ -68,6 +71,7 @@ endif
 # 通用文件生成规则
 %.bin : %.asm
 	$(NASM) $*.asm -o $*.bin
+
 %.o : %.c
 	$(GCC) $*.c -m32 -c  -ffreestanding -fno-builtin -o $*.o
 
@@ -106,17 +110,14 @@ endif
 ifneq ($(wildcard *.bin),)
 	$(RM) *.bin
 endif
+ifneq ($(wildcard *.elf),)
+	$(RM) *.elf
+endif
 ifneq ($(wildcard *.obj),)
 	$(RM) *.obj
 endif
 ifneq ($(wildcard *.o),)
 	$(RM) *.o
-endif
-ifneq ($(wildcard *.s),)
-	$(RM) *.s
-endif
-ifneq ($(wildcard *.S),)
-	$(RM) *.S
 endif
 ifneq ($(wildcard *.map),)
 	$(RM) *.map

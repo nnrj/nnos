@@ -6,8 +6,12 @@ APPPATH = ./app/
 MAKE	    = make
 NASM		= nasm
 GCC			= gcc
+OBJCOPY		= objcopy
+OBJDUMP		= objdump
+LD			= ld
 QEMU		= qemu-system-i386
 BOCHS		= bochs
+BOCHSDBG	= bochsdbg
 BXIMAGE		= bximage
 ECHO		= echo
 CD			= cd
@@ -65,6 +69,7 @@ endif
 # 通用文件生成规则
 %.bin : %.asm
 	$(NASM) $*.asm -o $*.bin
+
 %.o : %.c
 	$(GCC) $*.c -m32 -c  -ffreestanding -fno-builtin -o $*.o
 
@@ -103,17 +108,14 @@ endif
 ifneq ($(wildcard *.bin),)
 	$(RM) *.bin
 endif
+ifneq ($(wildcard *.elf),)
+	$(RM) *.elf
+endif
 ifneq ($(wildcard *.obj),)
 	$(RM) *.obj
 endif
 ifneq ($(wildcard *.o),)
 	$(RM) *.o
-endif
-ifneq ($(wildcard *.s),)
-	$(RM) *.s
-endif
-ifneq ($(wildcard *.S),)
-	$(RM) *.S
 endif
 ifneq ($(wildcard *.map),)
 	$(RM) *.map
