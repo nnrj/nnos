@@ -1,0 +1,33 @@
+all: kernel.img
+
+bootblock: boot.S bootmain.c sign
+	cc -m32 -g -c boot.S
+	cc -m32 -g -c naskfunc.s	
+	cc -m32 -g -fno-builtin -fno-pic -fno-stack-protector -nostdinc -Os -c bootmain.c
+	ld -N -e start -Ttext=0x8000 -m elf_i386 -o freeldr.elf boot.o bootmain.o
+	objdump -S freeldr.elf > bootblock.asm
+	objcopy -S -O binary -j .text freeldr.elf freeldr.sys
+#	./sign $@
+
+kernel: kernel.c
+	cc -g -c -m32 -fno-pic -ffreestanding kernel.c -o kernel.o
+	ld -m elf_i386 -Tlinker.ld kernel.o naskfunc.o -o kernel
+#	ld -m elf_i386 -e _kernel_main -Ttext=0x100000 kernel.o -o kernel    
+	objdump -SD $@ >$@.asm
+
+kernel.img: bootblock kernel
+#	dd if=/dev/zero of=kernel.img count=10000
+	dd if=freeldr.sys of=kernel.img seek=8279 conv=notrunc
+	dd if=kernel of=kernel.img seek=8287 conv=notrunc
+
+sign: sign.c
+	cc $< -o $@
+
+qemu-kernel:	kernel
+	DISPLAY=:0 qemu-system-i386 -kernel kernel -monitor stdio
+
+qemu: kernel.img
+	DISPLAY=:0 qemu-system-i386 -drive file=$<,format=raw -monitor stdio
+
+clean:
+	rm -rf kernel.img *.o *.asm bootblock kernel sign
