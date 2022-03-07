@@ -60,7 +60,8 @@ the development team of NNOS
 
 ***
 
-Email:tianhehechu@qq.com  
+Email:tianhehechu2017@gmail.com  
+Telegram:https://t.me/nnosDev
 
 <span id="NNOS开发者交流群">QQ-Group for NNOS Developer: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=a0e8dd73153e233040a0cb4ea45172596f6e2237a629aa174741de79a631a456"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="NNOS开发者交流群" title="NNOS开发者交流群"></a></span>（757581301）
 
