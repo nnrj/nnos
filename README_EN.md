@@ -2,7 +2,7 @@
 
 <font size=2 color=red>ATTENTION : If your IP from  Chinese mainland, the picture in this file may be load fail。</font>     
 
-*Update date:2020-09-15*
+*Update date:2022-03-07* *(Please pay attention to the develop branch for the latest features)*
 
 ## A Mini Operating System based on x86 Architecture
 
@@ -56,7 +56,7 @@ Team members: 天河何处 张继军、老白
 
 the development team of NNOS
 
-2020.09.15 18:55| *2019.05.25 00:11* |*2019.04.26 21:57*
+2022.03.07 20:27| *2019.05.25 00:11* |*2019.04.26 21:57*
 
 ***
 
