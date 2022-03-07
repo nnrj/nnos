@@ -2,7 +2,7 @@
 
 <font size=2 color=red>ATTENTION : If your IP from  Chinese mainland, the picture in this file may be load fail。</font>     
 
-*Update date:2020-09-15*
+*Update date:2022-03-07* *(Please pay attention to the develop branch for the latest features)*
 
 ## A Mini Operating System based on x86 Architecture
 
@@ -56,11 +56,12 @@ Team members: 天河何处 张继军、老白
 
 the development team of NNOS
 
-2020.09.15 18:55| *2019.05.25 00:11* |*2019.04.26 21:57*
+2022.03.07 20:27| *2019.05.25 00:11* |*2019.04.26 21:57*
 
 ***
 
-Email:tianhehechu@qq.com  
+Email:tianhehechu2017@gmail.com  
+Telegram:https://t.me/nnosDev
 
 <span id="NNOS开发者交流群">QQ-Group for NNOS Developer: <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=a0e8dd73153e233040a0cb4ea45172596f6e2237a629aa174741de79a631a456"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="NNOS开发者交流群" title="NNOS开发者交流群"></a></span>（757581301）
 
