@@ -6,9 +6,11 @@
 
 ## 基本x86架构的迷你操作系统
 
-> Email:tianhehechu@qq.com  
+> Email：tianhehechu@qq.com  
 >
-> <span id="NNOS开发者交流群">NNOS开发者交流群：<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=a0e8dd73153e233040a0cb4ea45172596f6e2237a629aa174741de79a631a456"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="NNOS开发者交流群" title="NNOS开发者交流群"></a></span>（757581301）
+> <span id="NNOS开发者交流群">NNOS开发者交流QQ群1：【757581301】 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=a0e8dd73153e233040a0cb4ea45172596f6e2237a629aa174741de79a631a456"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="NNOS开发者交流群" title="NNOS开发者交流群"></a></span>
+>
+> NNOS开发者交流QQ群2：【439950191】
 
 - 本项目旨在开发一个完备的计算机操作系统。 
 - 本系统基于川合秀实先生的《**30天自制操作系统**》设计和开发。
@@ -62,5 +64,7 @@
 
 Email:tianhehechu@qq.com  
 
-<span id="NNOS开发者交流群">NNOS开发者交流群：<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=a0e8dd73153e233040a0cb4ea45172596f6e2237a629aa174741de79a631a456"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="NNOS开发者交流群" title="NNOS开发者交流群"></a></span>（757581301）
+<span id="NNOS开发者交流群">NNOS开发者交流QQ群1：<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=a0e8dd73153e233040a0cb4ea45172596f6e2237a629aa174741de79a631a456"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="NNOS开发者交流群" title="NNOS开发者交流群"></a></span>【757581301】
+
+NNOS开发者交流QQ群2：【439950191】
 
