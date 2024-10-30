@@ -20,6 +20,7 @@ MAKEFONT	= $(TOOLPATH)makefont.exe
 BIN2OBJ		= $(TOOLPATH)bin2obj.exe
 COPY        = copy
 DEL         = del
+RM			= del
 
 #默认动作（执行不带参数的make时，默认执行make img）
 default :

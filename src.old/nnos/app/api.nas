@@ -103,7 +103,7 @@ _api_ascwin: ;void api_ascwin(int win,int x,int y,int vcolor,int len,char *str);
 	MOV  EBX,[ESP+20] ;win
 	MOV  ESI,[ESP+24] ;x
 	MOV  EDI,[ESP+28] ;y
-	MOV  EAX,[ESP+32] ;col
+	MOV  EAX,[ESP+32] ;color
 	MOV  ECX,[ESP+36] ;len
 	MOV  EBP,[ESP+40] ;str
 	INT  0x40

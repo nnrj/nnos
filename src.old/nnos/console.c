@@ -754,7 +754,15 @@ int *sys_api(int edi,int esi,int ebp,int esp,int ebx,int edx,int ecx,int eax){
 			reg[7] = (int)cover;
 			break;
 		}
-		case 6:{ //接口6，在窗口输出字符
+		// case 6:{ //接口6，在窗口输出ASCII字符
+		// 	cover=(SHEET *)(ebx & 0xfffffffe); //与0xfffffffe作与运算，按2的倍数取整（有效图层地址皆为偶数）
+		// 	wordsDraw8(cover->buf,cover->bxsize,esi,edi,eax,(char *)ebp + fileBase);
+		// 	if((ebx & 1) == 0){ //校验刷新标志位
+		// 		sheet_refresh(cover,esi,edi,esi+ecx * 8,edi + 16);
+		// 	}			
+		// 	break;
+		// }
+		case 6:{ //接口6，在窗口输出ASCII字符
 			cover=(SHEET *)(ebx & 0xfffffffe); //与0xfffffffe作与运算，按2的倍数取整（有效图层地址皆为偶数）
 			wordsDraw8(cover->buf,cover->bxsize,esi,edi,eax,(char *)ebp + fileBase);
 			if((ebx & 1) == 0){ //校验刷新标志位
@@ -985,6 +993,14 @@ int *sys_api(int edi,int esi,int ebp,int esp,int ebx,int edx,int ecx,int eax){
 			reg[7] = task->lang_mode; //获取语言模式
 			break;
 		}
+		// case 28:{ //接口28，在窗口输出文字
+		// 	cover = (SHEET *)(ebx & 0xfffffffe); //与0xfffffffe作与运算，按2的倍数取整（有效图层地址皆为偶数）
+		// 	wordsDraw8(cover->buf,cover->bxsize,esi,edi,eax,(char *)ebp + fileBase);
+		// 	if((ebx & 1) == 0){ //校验刷新标志位
+		// 		sheet_refresh(cover,esi,edi,esi+ecx * 8,edi + 16);
+		// 	}			
+		// 	break;
+		// }
 		/* default:{
 			break;
 		} */

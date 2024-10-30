@@ -21,8 +21,9 @@ void api_point(int win,int x,int y,int vcolor); //画点
 
 /*窗口相关*/
 int api_window(char *buffer,int width,int height,int vcolor,char *caption); //窗口创建
-void api_ascwin(int win,int x,int y,int vcolor,int len,char *str); //在窗口上绘制字符串
+void api_ascwin(int win,int x,int y,int vcolor,int len,char *str); //在窗口上绘制ASCII字符串
 void api_linewin(int win,int x0,int y0,int x1,int y1, int vcolor); //画线
+//void api_wordwin(int win, )
 void api_refreshwin(int win, int x0, int y0, int x1, int y1); //窗口刷新
 void api_closewin(int win); //关闭窗口
 

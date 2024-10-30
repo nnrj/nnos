@@ -191,7 +191,7 @@ void wordsDraw8(char *vram,int scrx,int fx,int fy,char vcolor,unsigned char *wor
 //void putfonts8_asc(char *vram, int xsize, int x, int y, char c, unsigned char *s){
 	extern char fonbase[4096]; //引入字库
 	struct TASK *task = taskNow(); //获取当前任务
-	char *fonts = (char *) *((int *) 0x0fe8), *font; //日文字库地址
+	char *fonts = (char *) *((int *) 0x0fe8), *font; // 日文字库地址
 	int k, t; //k，存放区号；t，存放点号。存放减1后的值（方便数组运用）
 
 	if (task->lang_mode == 0) {
@@ -567,3 +567,44 @@ void syslinewin(SHEET *sht,int x0,int y0,int x1,int y1,int vcolor){ //窗口直�
 		y += dy;
 	}
 }
+
+/**
+ * @brief 窗口文字绘制
+ */
+/* void winWordPrint(SHEET *sht, int charCode, int x, int y, int vcolor){
+	wordsDraw8(cover->buf,cover->bxsize,x,y,foreColor,s);
+	// char info[2];
+	// info[0] = charCode; //逐个打印字符
+	// info[1] = '\0';
+	// if(info[0] == 0x09){ //制表符
+	// 	while(1){ //寻找制表位，4的倍数
+	// 		// labelDraw(sht, x, y,COL8_38CE2F,COL8_000000," ",1); //填充空格
+	// 		console->cursorX += 8; //光标后移
+	// 		if(console->cursorX >= CONSOLE_WIDTH -(CONSOLE_WIDTH % 8) - 8){ //换行
+	// 			console->cursorX = 8;
+	// 			 newCMDLine(console);
+	// 		}
+	// 		if(((console->cursorX - 8) & 0x1f) == 0){ //可以被32整除(公因数为4、8、16、32，制表位)，32位恰可用二进制表示，故可直接使用&计算余数
+	// 			//size = (size + 0xfff) & 0xfffff000; //以4K为最小单位向上取整。相当于if((i & 0xfff) != 0){i = (i & 0xfffff000) + 0x1000;}
+	// 			break; //制表位找到，停止移动光标
+	// 		}
+	// 	}
+	// }
+	// else if(info[0] == 0x0a){ //换行符，换行回车一起处理，对0x0d回车符不再作处理
+	// 	console->cursorX = 8;
+	// 	newCMDLine(console);
+	// }
+	// else if(info[0] == 0x0d){ //回车符，换行回车一起处理，对0x0d回车符不再作处理
+	// 	//不作处理
+	// }	
+	// else{ //普通字符
+	// 	labelDraw(sht, x,console->cursorY,COL8_38CE2F,COL8_000000,info,1); //绘制信息
+	// 	//  newCMDLine(console); //换行
+	// 	console->cursorX += 8; //光标后移
+	// 	if(console->cursorX >= CONSOLE_WIDTH -(CONSOLE_WIDTH % 8) - 8 ){ //最右端换行
+	// 		console->cursorX = 8;
+	// 		newCMDLine(console);
+	// 	}									
+	// }
+	//return;
+} */

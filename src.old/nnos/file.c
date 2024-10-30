@@ -118,7 +118,7 @@ FILE_INFO *searchFile(char *fileName){
 	return 0;
 }
 
-int *deleteFile(char *fileName){
+/* int *deleteFile(char *fileName){
 	//int i,j;
 	COUNT i = 0;
 	COUNT j = 0;
@@ -162,12 +162,57 @@ int *deleteFile(char *fileName){
 			}
 		}
 	}
-	/* if(flag == 1){	
-		return &fileInfo[i];
+	// if(flag == 1){	
+	// 	return &fileInfo[i];
+	// }
+	// else{		
+	// 	return 0;
+	// }
+	return 0;
+} */
+int *deleteFile(char *fileName){
+	COUNT i = 0;
+	COUNT j = 0;
+	// COUNT t = -1;
+	char temp[5];
+	FILE_INFO *fileInfo = (FILE_INFO *)(DISK_ADR + 0X002600);
+	i = 0;j = 0; // 初始化游标
+	int flag = 0;
+	convertToUppercase(fileName); // 转为大写
+	for(i = 0; i < FILE_INFO_MAX; i++){
+		if(fileInfo[i].name[0] == 0x00){ // 无文件信息
+			break;
+		}
+		if((fileInfo[i].type & 0x18) != 0){ // 权限异常
+			break;
+		}
+		for(j = 0; j < FILE_FULL_NAME_SIZE; j++){
+			if(fileInfo[i].name[j] == fileName[j]){
+				flag = 1;
+			}
+			else{
+				flag = 0;
+				break;
+			}				
+		}
+		if(flag == 0){
+			break;
+		}
+		// if(fileInfo[i].name != fileName){
+		// 	continue;
+		// }
+		// t = i;
+		// for(j = t; j < FILE_INFO_MAX; j++){
+		// 将后方的文件信息往前移动
+		for(j = i; j < FILE_INFO_MAX; j++){	
+			if(fileInfo[j + 1].name[0] == 0){
+				fileInfo[j].name[0] = 0;
+				break;
+			}
+			fileInfo[j] = fileInfo[j + 1];
+		}
+		return 1;
 	}
-	else{		
-		return 0;
-	}	 */	
 	return 0;
 }
 
